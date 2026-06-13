@@ -3,683 +3,1219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beethoven Pilgrimage 2027 — Concert Monitor</title>
+<title>Beethoven 2027 — Concert Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0f1a; --bg2:#131929; --bg3:#1c2540; --rim:#263054; --rim2:#1a2040;
+  --gold:#c9a84c; --gold2:#8a6b2a; --goldf:#f0d898; --goldg:#e8c46a;
+  --cream:#f5f0e8; --cdim:#d4cbbf;
+  --txt:#e8e0d4; --txd:#9a9080; --txf:#56504a;
+  --red-bg:#2a0f0f; --red-bd:#7a2020; --red-tx:#f0a0a0;
+  --amb-bg:#1e1a0a; --amb-bd:#7a5a10; --amb-tx:#f0d080;
+  --grn-bg:#0a1a10; --grn-bd:#2a6a3a; --grn-tx:#80d0a0;
+  --blu-bg:#0a1020; --blu-bd:#2a4a8a; --blu-tx:#80a8f0;
+  --tel-bg:#091818; --tel-bd:#1a6060; --tel-tx:#70d0d0;
+  --pur-bg:#140f20; --pur-bd:#4a3a7a; --pur-tx:#b090f0;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7}
 
-  :root {
-    --ink: #1a1410;
-    --ink-mid: #3d3028;
-    --ink-muted: #7a6b5e;
-    --ink-faint: #b8a898;
-    --paper: #f7f3ed;
-    --paper-warm: #f0ebe2;
-    --paper-deep: #e8e0d4;
-    --rule: #c8b8a8;
-    --rule-light: #ddd4c8;
-    --gold: #9a7c3a;
-    --gold-light: #c4a55a;
-    --urgent: #7a2020;
-    --urgent-bg: #fdf0f0;
-    --high: #6b4a10;
-    --high-bg: #fdf6e8;
-    --medium: #1a4a6b;
-    --medium-bg: #eef4fb;
-    --watch: #3a5a2a;
-    --watch-bg: #f0f7ec;
-    --purple: #4a3a6b;
-    --purple-bg: #f2f0f8;
-  }
+/* ── HEADER ── */
+.hdr{background:var(--bg);text-align:center;padding:4.5rem 2rem 3.5rem;position:relative;border-bottom:1px solid var(--rim);overflow:hidden}
+.hdr-arch{position:absolute;bottom:0;left:50%;transform:translateX(-50%);border-radius:50% 50% 0 0 / 100% 100% 0 0;border:1px solid var(--rim);border-bottom:none;pointer-events:none}
+.a1{width:500px;height:250px;opacity:.45} .a2{width:800px;height:400px;opacity:.22} .a3{width:1100px;height:550px;opacity:.12}
+.eyebrow{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
+.hdr h1{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.1;color:var(--cream);margin-bottom:.3rem}
+.hdr h1 em{font-style:italic;color:var(--goldg)}
+.hdr-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--txd);margin-bottom:1.8rem}
+.gold-bar{width:48px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 1.6rem}
+.hdr-meta{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txf)}
 
-  html { font-size: 16px; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+/* ── INTRO ── */
+.intro{background:var(--bg2);border-bottom:1px solid var(--rim);padding:1.6rem 2rem;text-align:center}
+.intro p{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--cdim);max-width:680px;margin:0 auto;line-height:1.75}
+.intro strong{color:var(--goldg);font-weight:400;font-style:normal}
 
-  /* ── HEADER ── */
-  .header {
-    background: var(--ink);
-    color: var(--paper);
-    text-align: center;
-    padding: 4rem 2rem 3.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(255,255,255,0.012) 3px,
-      rgba(255,255,255,0.012) 4px
-    );
-    pointer-events: none;
-  }
-  .header-eyebrow {
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 300;
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 1.4rem;
-  }
-  .header h1 {
-    font-family: 'IM Fell English', serif;
-    font-weight: 400;
-    font-size: clamp(2.2rem, 5vw, 3.6rem);
-    line-height: 1.15;
-    color: var(--paper);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-  .header h1 em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
-  .header-subtitle {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--ink-faint);
-    margin-bottom: 2rem;
-  }
-  .header-rule {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto 1.5rem;
-  }
-  .header-meta {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
+/* ── NAV ── */
+.city-nav{background:var(--bg2);border-bottom:1px solid var(--rim);padding:.75rem 2rem;position:sticky;top:0;z-index:100}
+.city-nav-inner{max-width:960px;margin:0 auto;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.nav-label{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txf);margin-right:.5rem;white-space:nowrap}
+.nav-btn{font-size:.72rem;font-weight:500;letter-spacing:.06em;padding:5px 14px;border-radius:20px;border:1px solid var(--rim);color:var(--txd);background:transparent;cursor:pointer;text-decoration:none;transition:all .15s;white-space:nowrap}
+.nav-btn:hover,.nav-btn.active{background:var(--bg3);border-color:var(--gold2);color:var(--goldg)}
+.nb-bonn   {--nc:#7a60cc} .nb-cologne{--nc:#2aaa70} .nb-linz{--nc:#cc8820} .nb-vienna{--nc:#cc3a5a} .nb-festival{--nc:#c9a84c}
+.nav-btn.nb-bonn:hover,.nav-btn.nb-bonn.active{border-color:#7a60cc;color:#b090ff}
+.nav-btn.nb-festival{border-color:var(--gold2);color:var(--gold)}
+.nav-btn.nb-festival:hover,.nav-btn.nb-festival.active{background:var(--amb-bg);border-color:var(--gold);color:var(--goldf)}
+.nav-btn.nb-cologne:hover,.nav-btn.nb-cologne.active{border-color:#2aaa70;color:#70e0a8}
+.nav-btn.nb-linz:hover,.nav-btn.nb-linz.active{border-color:#cc8820;color:#f0c060}
+.nav-btn.nb-vienna:hover,.nav-btn.nb-vienna.active{border-color:#cc3a5a;color:#f08098}
 
-  /* ── INTRO BAND ── */
-  .intro-band {
-    background: var(--ink-mid);
-    color: var(--paper-warm);
-    padding: 1.6rem 2rem;
-    text-align: center;
-  }
-  .intro-band p {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--paper-warm);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-  .intro-band strong {
-    color: var(--gold-light);
-    font-style: normal;
-    font-weight: 400;
-  }
+/* ── MAIN ── */
+.main{max-width:960px;margin:0 auto;padding:2.5rem 2rem 5rem}
 
-  /* ── STRATEGY BOX ── */
-  .strategy-band {
-    background: var(--paper-deep);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 1.5rem 2rem;
-  }
-  .strategy-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem 1.5rem;
-    align-items: start;
-  }
-  .strategy-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    white-space: nowrap;
-    padding-top: 0.15rem;
-  }
-  .strategy-text {
-    font-size: 0.92rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
-  }
-  .strategy-text strong { font-weight: 600; color: var(--ink); }
+/* ── FESTIVAL CARDS ── */
+.pip-festival{background:var(--gold);box-shadow:0 0 8px var(--gold2)}
+.fest-card{background:var(--bg2);border:1px solid var(--gold2);border-radius:4px;margin-bottom:1rem;overflow:hidden}
+.fest-card.flagship{border-color:var(--gold);border-top:2px solid var(--gold)}
+.fest-hd{display:grid;grid-template-columns:1fr auto;gap:.5rem 1rem;padding:1.1rem 1.3rem;cursor:pointer;user-select:none;transition:background .15s;align-items:start}
+.fest-hd:hover{background:var(--bg3)}
+.fest-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--goldg);margin-bottom:.3rem;line-height:1.3}
+.fest-summary{font-size:.83rem;color:var(--txd);line-height:1.5;margin-bottom:.35rem}
+.fest-summary strong{color:var(--cream);font-weight:500}
+.fest-dates-band{display:flex;align-items:center;gap:.75rem;padding:.55rem 1.3rem .7rem;background:var(--amb-bg);border-top:1px solid var(--rim2)}
+.fest-dates-label{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.fest-dates-val{font-size:.82rem;color:var(--amb-tx);font-weight:500}
+.fest-dates-loc{font-size:.75rem;color:var(--txd);margin-left:auto;white-space:nowrap}
 
-  /* ── MAIN LAYOUT ── */
-  .main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 
-  /* ── SECTION HEADERS ── */
-  .section-head {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 3rem 0 1.5rem;
-  }
-  .section-head:first-child { margin-top: 0; }
-  .city-marker {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    white-space: nowrap;
-  }
-  .city-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot-bonn    { background: #5a4a8a; }
-  .dot-cologne { background: #2a7a5a; }
-  .dot-linz    { background: #9a6a1a; }
-  .dot-vienna  { background: #8a2a4a; }
-  .dot-general { background: #5a5550; }
-  .section-rule {
-    flex: 1;
-    height: 1px;
-    background: var(--rule-light);
-  }
-  .section-dates {
-    font-size: 0.75rem;
-    color: var(--ink-faint);
-    font-style: italic;
-  }
+/* ── CITY BLOCK ── */
+.city-block{margin-bottom:3.5rem}
+.city-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;padding-bottom:1rem;border-bottom:1px solid var(--rim)}
+.city-pip{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pip-bonn{background:#7a60cc;box-shadow:0 0 8px #7a60cc66}
+.pip-cologne{background:#2aaa70;box-shadow:0 0 8px #2aaa7066}
+.pip-linz{background:#cc8820;box-shadow:0 0 8px #cc882066}
+.pip-vienna{background:#cc3a5a;box-shadow:0 0 8px #cc3a5a66}
+.city-name{font-family:'Playfair Display',serif;font-weight:400;font-size:1.6rem;color:var(--cream)}
+.city-tagline{font-size:.78rem;font-style:italic;color:var(--txd);margin-left:.25rem}
+.city-filler{flex:1;height:1px;background:linear-gradient(90deg,var(--rim),transparent)}
+.city-dates{font-size:.7rem;color:var(--txf);white-space:nowrap}
 
-  /* ── VENUE CARDS ── */
-  .venue-card {
-    background: white;
-    border: 1px solid var(--rule-light);
-    border-radius: 2px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 0.75rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.5rem 1.25rem;
-    align-items: start;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    position: relative;
-  }
-  .venue-card:hover {
-    border-color: var(--rule);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  .venue-card.urgent { border-left: 3px solid var(--urgent); }
-  .venue-card.high   { border-left: 3px solid var(--gold); }
+/* ── VENUE CARD ── */
+.venue{background:var(--bg2);border:1px solid var(--rim);border-radius:4px;margin-bottom:1rem;overflow:hidden}
+.venue.urgent{border-left:3px solid var(--red-bd)}
+.venue.high{border-left:3px solid var(--gold2)}
+.venue.new{border-left:3px solid var(--tel-bd)}
 
-  .venue-name {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-    line-height: 1.3;
-  }
-  .venue-desc {
-    font-size: 0.88rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
-    margin-bottom: 0.6rem;
-  }
-  .venue-desc strong { font-weight: 600; color: var(--ink); }
-  .venue-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-  }
-  .date-chip {
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    background: var(--paper-deep);
-    color: var(--ink-muted);
-    border: 1px solid var(--rule-light);
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .date-chip.confirmed {
-    background: var(--watch-bg);
-    color: var(--watch);
-    border-color: #c8dfc0;
-  }
-  .date-chip.flagship {
-    background: var(--urgent-bg);
-    color: var(--urgent);
-    border-color: #e8c0c0;
-    font-weight: 600;
-  }
-  .venue-link {
-    font-size: 0.78rem;
-    color: var(--gold);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    letter-spacing: 0.03em;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s;
-  }
-  .venue-link:hover { border-bottom-color: var(--gold-light); }
-  .venue-link svg { flex-shrink: 0; }
+/* CARD HEADER — the glanceable row */
+.card-hd{display:grid;grid-template-columns:1fr auto;gap:.5rem 1rem;padding:1.1rem 1.3rem;cursor:pointer;user-select:none;transition:background .15s;align-items:start}
+.card-hd:hover{background:var(--bg3)}
+.card-hd-left{}
+.venue-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;line-height:1.3}
+.programme-summary{font-size:.83rem;color:var(--txd);line-height:1.5;margin-bottom:.4rem}
+.programme-summary strong{color:var(--cream);font-weight:500}
+.programme-summary em{font-style:italic;color:var(--txd)}
+.card-hd-right{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0}
+.badge{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;border:1px solid;white-space:nowrap}
+.b-urgent{background:var(--red-bg);color:var(--red-tx);border-color:var(--red-bd)}
+.b-high{background:var(--amb-bg);color:var(--amb-tx);border-color:var(--amb-bd)}
+.b-tbc{background:var(--pur-bg);color:var(--pur-tx);border-color:var(--pur-bd)}
+.b-new{background:var(--tel-bg);color:var(--tel-tx);border-color:var(--tel-bd)}
+.b-good{background:var(--grn-bg);color:var(--grn-tx);border-color:var(--grn-bd)}
+.b-info{background:var(--blu-bg);color:var(--blu-tx);border-color:var(--blu-bd)}
+.toggle-hint{font-size:.65rem;color:var(--txf);letter-spacing:.05em;white-space:nowrap}
 
-  /* ── BADGES ── */
-  .badge {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 2px;
-    white-space: nowrap;
-    align-self: start;
-    margin-top: 3px;
-  }
-  .badge-urgent  { background: var(--urgent-bg);  color: var(--urgent);  border: 1px solid #e8c0c0; }
-  .badge-high    { background: var(--high-bg);    color: var(--high);    border: 1px solid #e8d4a0; }
-  .badge-medium  { background: var(--medium-bg);  color: var(--medium);  border: 1px solid #b8d0e8; }
-  .badge-watch   { background: var(--watch-bg);   color: var(--watch);   border: 1px solid #c0d8b8; }
-  .badge-purple  { background: var(--purple-bg);  color: var(--purple);  border: 1px solid #c8c0e0; }
+/* DATES ROW */
+.dates-row{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1.3rem .8rem}
+.dchip{font-size:.68rem;padding:2px 8px;border-radius:2px;border:1px solid;white-space:nowrap}
+.dc-confirmed{background:var(--grn-bg);color:var(--grn-tx);border-color:var(--grn-bd)}
+.dc-flagship{background:var(--red-bg);color:var(--red-tx);border-color:var(--red-bd)}
+.dc-tbc{background:var(--pur-bg);color:var(--pur-tx);border-color:var(--pur-bd)}
+.dc-new{background:var(--tel-bg);color:var(--tel-tx);border-color:var(--tel-bd)}
 
-  /* ── TIMELINE CALLOUT ── */
-  .timeline-box {
-    background: var(--ink);
-    color: var(--paper-warm);
-    border-radius: 2px;
-    padding: 2rem 2rem;
-    margin: 2.5rem 0 0;
-  }
-  .timeline-box h3 {
-    font-family: 'IM Fell English', serif;
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: var(--gold-light);
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.02em;
-  }
-  .timeline-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 1.25rem;
-  }
-  .tl-date {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    white-space: nowrap;
-    padding-top: 0.1rem;
-    letter-spacing: 0.05em;
-  }
-  .tl-action {
-    font-size: 0.88rem;
-    color: var(--paper-warm);
-    line-height: 1.5;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    margin-bottom: 0.1rem;
-  }
-  .tl-action:last-child { border-bottom: none; }
-  .tl-action strong { color: white; font-weight: 600; }
+/* EXPANDABLE DETAIL */
+.detail{border-top:1px solid var(--rim2);display:none;padding:1.2rem 1.3rem}
+.detail.open{display:block}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.detail-block{}
+.dl{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.di{font-size:.82rem;color:var(--txd);line-height:1.6}
+.di strong{color:var(--cream);font-weight:500}
+.di em{font-style:italic}
 
-  /* ── DIVIDER ── */
-  hr.section-divider {
-    border: none;
-    border-top: 1px solid var(--rule-light);
-    margin: 2rem 0 0;
-  }
+/* PROGRAMME TABLE */
+.prog-table{width:100%;border-collapse:collapse;margin-top:.5rem}
+.prog-table tr{border-bottom:1px solid var(--rim2)}
+.prog-table tr:last-child{border-bottom:none}
+.prog-table td{font-size:.8rem;padding:.4rem .3rem;vertical-align:top;color:var(--txd)}
+.prog-table td:first-child{white-space:nowrap;padding-right:.8rem;color:var(--txf)}
+.prog-table td strong{color:var(--cream);font-weight:500}
+.prog-table td em{font-style:italic;color:var(--goldg)}
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink-mid);
-    color: var(--ink-faint);
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    line-height: 1.8;
-  }
-  footer em {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    color: var(--gold-light);
-    font-size: 0.92rem;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+/* LINKS ROW */
+.links-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--rim2)}
+.vlink{font-size:.75rem;color:var(--gold2);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .15s}
+.vlink:hover{color:var(--goldg)}
+.vlink svg{opacity:.7}
+.vlink.primary{color:var(--goldg);font-weight:500}
+.vlink.maps{color:var(--grn-tx)}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .header { padding: 3rem 1.5rem 2.5rem; }
-    .main { padding: 2rem 1.25rem 4rem; }
-    .venue-card { grid-template-columns: 1fr; }
-    .badge { align-self: auto; }
-    .strategy-inner { grid-template-columns: 1fr; gap: 0.25rem; }
-    .timeline-grid { grid-template-columns: 1fr; }
-    .tl-date { font-size: 0.72rem; color: var(--gold-light); margin-top: 0.75rem; }
-    .tl-date:first-child { margin-top: 0; }
-  }
+/* TICKET BOX */
+.ticket-box{background:var(--bg3);border:1px solid var(--rim);border-radius:3px;padding:.75rem 1rem;margin-top:.75rem;font-size:.8rem;color:var(--txd);line-height:1.5}
+.ticket-box strong{color:var(--cream);font-weight:500}
+.ticket-box .tb-label{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem}
 
-  @media (prefers-reduced-motion: no-preference) {
-    .venue-card { transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s; }
-    .venue-card:hover { transform: translateY(-1px); }
-  }
+/* NOTE BOX */
+.note-box{background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:.75rem 1rem;margin-top:.75rem;font-size:.8rem;color:var(--red-tx);line-height:1.5}
+.note-box strong{font-weight:500;color:#ffb0b0}
+
+/* DIVIDER */
+.vdivider{border:none;border-top:1px solid var(--rim);margin:2rem 0}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--rim);text-align:center;padding:2.5rem 2rem}
+.fq{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--goldf);display:block;margin-bottom:.6rem}
+.fm{font-size:.7rem;letter-spacing:.1em;color:var(--txf)}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hdr{padding:3rem 1.25rem 2.5rem}
+  .main{padding:1.5rem 1rem 4rem}
+  .city-nav{padding:.5rem 1rem}
+  .detail-grid{grid-template-columns:1fr}
+  .a1,.a2,.a3{display:none}
+  .card-hd{grid-template-columns:1fr}
+  .card-hd-right{flex-direction:row;align-items:center;margin-top:.3rem}
+}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <p class="header-eyebrow">Concert Monitor · March 10 – April 9, 2027</p>
-  <h1>Beethoven <em>Pilgrimage</em> 2027</h1>
-  <p class="header-subtitle">Bonn to Vienna · 200th Anniversary of his Death</p>
-  <div class="header-rule"></div>
-  <p class="header-meta">Germany &amp; Austria · Venue Guide &amp; Booking Tracker</p>
+<header class="hdr">
+  <div class="hdr-arch a1"></div>
+  <div class="hdr-arch a2"></div>
+  <div class="hdr-arch a3"></div>
+  <p class="eyebrow">Concert Guide · March – May 2027</p>
+  <h1>Beethoven <em>200</em></h1>
+  <p class="hdr-sub">200th Anniversary of his Death · Germany &amp; Austria</p>
+  <div class="gold-bar"></div>
+  <p class="hdr-meta">All known concerts · March 10 – May 1, 2027</p>
 </header>
 
-<div class="intro-band">
-  <p>On <strong>March 26, 1827</strong>, Beethoven died in Vienna. This page tracks every venue and ensemble worth watching across your four-week journey — from Bonn, along the Rhine, through Linz, to the anniversary itself. Bookmark it and return as programmes are announced from autumn 2026.</p>
+<div class="intro">
+  <p>On <strong>March 26, 1827</strong>, Beethoven died in Vienna. This guide lists every known Beethoven concert across Germany and Austria from March through May 2027 — confirmed programmes, ticket links, and context for each venue. Click any card to expand the full detail.</p>
 </div>
 
-<div class="strategy-band">
-  <div class="strategy-inner">
-    <span class="strategy-label">Strategy</span>
-    <p class="strategy-text">Programmes for 2027 are announced from <strong>autumn 2026</strong>. Create accounts at each venue site now so you can purchase the moment tickets release. For <strong>March 26</strong> specifically — have Musikverein and Vienna Philharmonic open simultaneously. If the flagship concert sells out instantly, the specialist travel services below are your safety net.</p>
+<nav class="city-nav">
+  <div class="city-nav-inner">
+    <span class="nav-label">Jump to</span>
+    <a class="nav-btn nb-bonn" href="#bonn">Bonn</a>
+    <a class="nav-btn nb-cologne" href="#cologne">Cologne</a>
+    <a class="nav-btn nb-linz" href="#linz">Linz</a>
+    <a class="nav-btn nb-vienna" href="#vienna">Vienna — Musikverein</a>
+    <a class="nav-btn nb-vienna" href="#konzerthaus">Vienna — Konzerthaus</a>
+    <a class="nav-btn nb-vienna" href="#staatsoper">Vienna — Staatsoper &amp; More</a>
+    <a class="nav-btn nb-festival" href="#festivals">✦ Festivals</a>
   </div>
-</div>
+</nav>
 
 <main class="main">
 
-  <!-- ── BONN ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-bonn"></span>Bonn</span>
-    <div class="section-rule"></div>
-    <span class="section-dates">March 10–12</span>
+<!-- ══════════════════════════════════════ BONN ══════════════════════════════════════ -->
+<section class="city-block" id="bonn">
+  <div class="city-head">
+    <span class="city-pip pip-bonn"></span>
+    <span class="city-name">Bonn</span>
+    <span class="city-tagline">— his birthplace</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March 10 onwards</span>
   </div>
 
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Beethoven-Haus Bonn — Concerts &amp; Events</p>
-      <p class="venue-desc">The birthplace museum runs its own chamber concert series, often in the historic courtyard. Expect a major 200th anniversary season from late 2026. <strong>Sign up for their newsletter now</strong> — this will be the spiritual centre of the entire anniversary year.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 10–12</span>
-        <span class="date-chip">Chamber · museum events</span>
+  <!-- BOB: Missa solemnis -->
+  <div class="venue urgent">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Beethoven Orchester Bonn — Missa solemnis</p>
+        <p class="programme-summary"><strong>Beethoven: Missa solemnis op. 123</strong> · Soloist: Chen Reiss (soprano) · Beethovenhalle Großer Saal</p>
       </div>
-      <a class="venue-link" href="https://www.beethoven.de" target="_blank" rel="noopener">
-        beethoven.de
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
-    </div>
-    <span class="badge badge-high">High priority</span>
-  </div>
-
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Beethoven Orchester Bonn</p>
-      <p class="venue-desc">Bonn's own orchestra. The 2027 anniversary programme will be central to their season — check from autumn 2026 for Beethoven-heavy programming across your Days 1–3.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 10–12</span>
-        <span class="date-chip">Orchestral</span>
+      <div class="card-hd-right">
+        <span class="badge b-urgent">★ Book now</span>
+        <span class="toggle-hint">expand ↓</span>
       </div>
-      <a class="venue-link" href="https://www.beethoven-orchester.de" target="_blank" rel="noopener">
-        beethoven-orchester.de
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-high">High priority</span>
-  </div>
-
-  <!-- ── COLOGNE ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-cologne"></span>Cologne</span>
-    <div class="section-rule"></div>
-    <span class="section-dates">March 12 evening</span>
-  </div>
-
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Kölner Philharmonie</p>
-      <p class="venue-desc">One of Germany's great halls, 25 minutes by train from Bonn. Both the WDR Sinfonieorchester and Gürzenich-Orchester are based here — anniversary programming very likely on your <strong>Day 3 evening (March 12)</strong>. Return to Bonn by late evening.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 12 evening</span>
-        <span class="date-chip">Orchestral</span>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Thu Mar 25 · 19:30</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Programme</p>
+          <table class="prog-table">
+            <tr><td>Thu Mar 25 · 19:30</td><td><strong>Beethoven: Missa solemnis in D major, op. 123</strong><br>Soloist: <em>Chen Reiss</em> (soprano)<br>Venue: Beethovenhalle Großer Saal</td></tr>
+          </table>
+          <p class="dl" style="margin-top:1rem">Context</p>
+          <p class="di">Beethoven himself called the Missa solemnis his greatest work. The Beethoven Orchester Bonn has programmed it as their central anniversary statement — one day before the exact 200th anniversary date. Hearing it in Beethoven's birthplace, with the Vienna performance the following evening, creates an extraordinary geographical bookend. Chen Reiss is one of the foremost sopranos in the current repertoire.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Beethovenhalle Bonn</strong><br>Wachsbleiche 1, 53111 Bonn<br>Home hall of the Beethoven Orchester Bonn. Conductor: <em>Dirk Kaftan</em> (GMD)</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            <strong>General sale opens June 26, 2026</strong> (subscriber priority from June 12). Box office: Windeckstr. 1, Bonn. Tel: 0228 778008. Online after June 26.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.beethoven-orchester.de" target="_blank" rel="noopener">beethoven-orchester.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.beethovenhalle.de" target="_blank" rel="noopener">beethovenhalle.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Beethovenhalle+Bonn+Wachsbleiche+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
       </div>
-      <a class="venue-link" href="https://www.koelner-philharmonie.de" target="_blank" rel="noopener">
-        koelner-philharmonie.de
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-high">Book now</span>
   </div>
 
-  <!-- ── NETWORK ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-general"></span>EU Anniversary Network</span>
-    <div class="section-rule"></div>
-  </div>
-
-  <div class="venue-card">
-    <div>
-      <p class="venue-name">Beethoven27 — EU Anniversary Project</p>
-      <p class="venue-desc">A network of 27 EU cities coordinating anniversary events across 2027. <strong>The single best overview of the full landscape</strong> — track events across Bonn, Cologne, Vienna and beyond from one place, rather than monitoring each venue individually.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Multi-city · all dates</span>
+  <!-- BOB: Dankgesang chamber -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Beethoven Orchester Bonn — Dankgesang Chamber Evening</p>
+        <p class="programme-summary"><strong>Arvo Pärt, Beethoven, Mendelssohn</strong> · Yaron Quartet · Montagskonzert at Beethoven-Haus</p>
       </div>
-      <a class="venue-link" href="https://www.beethoven27.com" target="_blank" rel="noopener">
-        beethoven27.com
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
-    </div>
-    <span class="badge badge-purple">Monitor now</span>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ── LINZ ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-linz"></span>Linz</span>
-    <div class="section-rule"></div>
-    <span class="section-dates">March 17–18</span>
-  </div>
-
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Brucknerhaus Linz — Beethoven Symphony Cycle</p>
-      <p class="venue-desc">Markus Poschner and the Bruckner Orchester Linz are performing a <strong>complete Beethoven symphony cycle through 2027</strong>. A concert falls on your Day 9 (March 18). Book as soon as the 2027 programme is published — expected autumn 2026. <em>Beethoven link: in 1812 he stayed in Linz with his brother and sketched the 8th Symphony here.</em></p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 18 evening</span>
-        <span class="date-chip">Complete symphony cycle</span>
+      <div class="card-hd-right">
+        <span class="badge b-good">Confirmed</span>
+        <span class="toggle-hint">expand ↓</span>
       </div>
-      <a class="venue-link" href="https://www.brucknerhaus.at" target="_blank" rel="noopener">
-        brucknerhaus.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-high">Book early</span>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ── VIENNA ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-vienna"></span>Vienna</span>
-    <div class="section-rule"></div>
-    <span class="section-dates">March 19 – April 9</span>
-  </div>
-
-  <div class="venue-card urgent">
-    <div>
-      <p class="venue-name">Musikverein — Goldener Saal ★</p>
-      <p class="venue-desc">Home of the Vienna Philharmonic and arguably the greatest concert hall in the world. <strong>Franz Welser-Möst programme confirmed for March 20.</strong> The March 26 anniversary concert is the single most important ticket of the entire trip — it may sell out within hours of going on sale. Monitor both the Musikverein and VPO sites.</p>
-      <div class="venue-meta">
-        <span class="date-chip confirmed">Mar 20 — confirmed</span>
-        <span class="date-chip">Mar 25 pre-anniversary</span>
-        <span class="date-chip flagship">★ Mar 26 flagship</span>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Mon Apr 5 · 19:30</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Programme</p>
+          <table class="prog-table">
+            <tr><td>Mon Apr 5</td><td><strong>Arvo Pärt, Beethoven, Mendelssohn Bartholdy</strong><br>Performed by the <em>Yaron Quartet</em><br>Concert title: "Dankgesang" (Song of Thanksgiving)</td></tr>
+          </table>
+          <p class="dl" style="margin-top:1rem">Context</p>
+          <p class="di">The title "Dankgesang" references the slow movement of Beethoven's late String Quartet Op. 132 — one of the most profound and personal passages he ever wrote, inscribed "Holy song of thanks to the Divinity, from one made well" after his recovery from illness. An intimate evening in the Beethoven-Haus itself, steps from his birthplace.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Beethoven-Haus Bonn</strong><br>Bonngasse 20, 53111 Bonn<br>The Kammermusiksaal Hermann J. Abs — chamber music hall adjacent to Beethoven's birthplace.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            General sale from <strong>June 26, 2026</strong>. Box office Bonn: 0228 778008.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.beethoven-orchester.de/konzerte/" target="_blank" rel="noopener">beethoven-orchester.de/konzerte <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.beethoven.de" target="_blank" rel="noopener">beethoven.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Beethoven-Haus+Bonn+Bonngasse+20" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
       </div>
-      <a class="venue-link" href="https://www.musikverein.at" target="_blank" rel="noopener">
-        musikverein.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-urgent">★ Urgent</span>
   </div>
 
-  <div class="venue-card urgent">
-    <div>
-      <p class="venue-name">Vienna Philharmonic</p>
-      <p class="venue-desc">Book directly on the VPO site <em>as well as</em> Musikverein — ticket allocations sometimes differ. <strong>Create an account and enable concert alerts now</strong> for 2027 announcements. On March 26 release day: have both tabs open simultaneously.</p>
-      <div class="venue-meta">
-        <span class="date-chip confirmed">Mar 20 — confirmed</span>
-        <span class="date-chip flagship">★ Mar 26 anniversary</span>
+  <!-- Beethoven-Haus Bonn concerts -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Beethoven-Haus Bonn — Anniversary Concert Series</p>
+        <p class="programme-summary"><strong>Chamber concerts in the birthplace</strong> · Full 2027 programme TBC from autumn 2026 · Includes Beethoven27 EU project concerts</p>
       </div>
-      <a class="venue-link" href="https://www.wienerphilharmoniker.at" target="_blank" rel="noopener">
-        wienerphilharmoniker.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
-    </div>
-    <span class="badge badge-urgent">★ Urgent</span>
-  </div>
-
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Theater an der Wien</p>
-      <p class="venue-desc">Where the 5th and 6th Symphonies premiered on the <em>same concert</em> in December 1808, and where Fidelio premiered in 1805 — with Napoleonic troops occupying Vienna. Strong 2027 anniversary programming expected. <strong>Watch for their season announcement (typically spring/summer 2026).</strong></p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 21 evening</span>
-        <span class="date-chip">Opera · orchestral</span>
+      <div class="card-hd-right">
+        <span class="badge b-tbc">Watch for programme</span>
+        <span class="toggle-hint">expand ↓</span>
       </div>
-      <a class="venue-link" href="https://www.theater-wien.at" target="_blank" rel="noopener">
-        theater-wien.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-high">Watch for season</span>
-  </div>
-
-  <div class="venue-card high">
-    <div>
-      <p class="venue-name">Konzerthaus Vienna</p>
-      <p class="venue-desc">Home of the Wiener Symphoniker. Likely to carry major anniversary programming throughout the week of March 20–26 — a strong option for the <strong>pre-anniversary evenings</strong> (March 23, 25) and potentially a parallel flagship program on March 26.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 23 · Mar 25</span>
-        <span class="date-chip">Orchestral · chamber</span>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Mar–May 2027 · dates TBC</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">What to expect</p>
+          <p class="di">The Beethoven-Haus runs its own chamber concert series in the Kammermusiksaal. For the 200th anniversary year the programme will be extensive and Beethoven-focused throughout. The house is also the Bonn node of the <strong>Beethoven27</strong> EU project, which brings the orchestra Le Concert Olympique under Jan Caeyers to perform 27 key Beethoven works in 27 EU cities from 2024–2027. The 2027 concerts focus on his <em>late works</em>, including the Ninth Symphony and the Missa solemnis — the deepest cuts.</p>
+          <p class="dl" style="margin-top:1rem">Beethoven27 EU Project</p>
+          <p class="di">In 2027, Le Concert Olympique performs Beethoven's late works in Bonn and 26 other EU cities. Programme at beethoven27.com and beethoven.de.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Beethoven-Haus Bonn</strong><br>Bonngasse 20, 53111 Bonn<br>World's premier Beethoven museum and cultural institution. Concerts in the Kammermusiksaal Hermann J. Abs.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets & Newsletter</span>
+            Sign up for the Beethoven-Haus newsletter now — they announce anniversary programme well in advance. Tickets typically via their own box office and website.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.beethoven.de" target="_blank" rel="noopener">beethoven.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.beethoven27.com" target="_blank" rel="noopener">beethoven27.com <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Beethoven-Haus+Bonn+Bonngasse+20" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
       </div>
-      <a class="venue-link" href="https://www.konzerthaus.at" target="_blank" rel="noopener">
-        konzerthaus.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-high">High priority</span>
   </div>
 
-  <div class="venue-card">
-    <div>
-      <p class="venue-name">Vienna State Opera — Wiener Staatsoper</p>
-      <p class="venue-desc"><strong>Fidelio — Beethoven's only opera — is almost certain to be staged here during the anniversary year.</strong> A performance in late March would be extraordinary: the opera is about political imprisonment and liberation, composed by a man who believed in human freedom absolutely. Check the 2026/27 season announcement.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Late Mar 2027</span>
-        <span class="date-chip">Fidelio likely</span>
+</section>
+
+<!-- ══════════════════════════════════════ COLOGNE ══════════════════════════════════════ -->
+<section class="city-block" id="cologne">
+  <div class="city-head">
+    <span class="city-pip pip-cologne"></span>
+    <span class="city-name">Cologne</span>
+    <span class="city-tagline">— 25 min by train from Bonn</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March 12 evening</span>
+  </div>
+
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Kölner Philharmonie — WDR / Gürzenich Anniversary Programme</p>
+        <p class="programme-summary"><strong>WDR Sinfonieorchester</strong> or <strong>Gürzenich-Orchester Köln</strong> · Beethoven anniversary programme · Full details TBC from autumn 2026</p>
       </div>
-      <a class="venue-link" href="https://www.wiener-staatsoper.at" target="_blank" rel="noopener">
-        wiener-staatsoper.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
-    </div>
-    <span class="badge badge-purple">Worth checking</span>
-  </div>
-
-  <div class="venue-card">
-    <div>
-      <p class="venue-name">Wiener Symphoniker — Direct listings</p>
-      <p class="venue-desc">The Vienna Symphony's own site sometimes carries allocations before Konzerthaus sells publicly. Sign up for their newsletter to catch early releases.</p>
-      <div class="venue-meta">
-        <span class="date-chip">Mar 19–30</span>
+      <div class="card-hd-right">
+        <span class="badge b-tbc">Programme TBC</span>
+        <span class="toggle-hint">expand ↓</span>
       </div>
-      <a class="venue-link" href="https://www.wiener-symphoniker.at" target="_blank" rel="noopener">
-        wiener-symphoniker.at
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
     </div>
-    <span class="badge badge-watch">Newsletter</span>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ── SPECIALIST SERVICES ── -->
-  <div class="section-head">
-    <span class="city-marker"><span class="city-dot dot-general"></span>Specialist ticket services</span>
-    <div class="section-rule"></div>
-  </div>
-
-  <div class="venue-card">
-    <div>
-      <p class="venue-name">Interlude Travel — Classical Music Specialists</p>
-      <p class="venue-desc">A UK-based travel company specialising in classical music journeys. Can procure otherwise unavailable tickets — including the March 26 flagship — and arrange accommodation. <strong>Worth contacting now</strong>: they will already be planning 2027 anniversary tours and will have allocations set aside.</p>
-      <a class="venue-link" href="https://www.interlude.travel" target="_blank" rel="noopener">
-        interlude.travel
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Mar 12 evening (your itinerary day 3)</span>
+      <span class="dchip dc-tbc">Additional dates Mar–May TBC</span>
     </div>
-    <span class="badge badge-watch">Contact now</span>
-  </div>
-
-  <div class="venue-card">
-    <div>
-      <p class="venue-name">Classic Journeys</p>
-      <p class="venue-desc">Another classical travel specialist building packages around major anniversary concerts. Particularly useful for Vienna March 26 if individual tickets prove impossible to secure.</p>
-      <a class="venue-link" href="https://www.classicjourneys.co.uk" target="_blank" rel="noopener">
-        classicjourneys.co.uk
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>
-      </a>
-    </div>
-    <span class="badge badge-watch">Backup option</span>
-  </div>
-
-  <!-- ── TIMELINE ── -->
-  <div class="timeline-box">
-    <h3>When to act</h3>
-    <div class="timeline-grid">
-      <span class="tl-date">Now</span>
-      <p class="tl-action">Create accounts at Musikverein, Vienna Philharmonic, Konzerthaus, and Brucknerhaus. Enable alerts. Contact Interlude Travel to flag your interest in the March 26 concert.</p>
-
-      <span class="tl-date">Mid-2026</span>
-      <p class="tl-action">Check <strong>beethoven27.com</strong> for the full EU anniversary programme overview. Theater an der Wien season announcement typically drops around now.</p>
-
-      <span class="tl-date">Autumn 2026</span>
-      <p class="tl-action"><strong>Act immediately</strong> when Musikverein and Vienna Philharmonic publish their 2027 season. This is also when Brucknerhaus Linz publishes their cycle schedule. Book all Vienna concerts as soon as they go on sale.</p>
-
-      <span class="tl-date">Mar 26 on sale</span>
-      <p class="tl-action">Have <strong>musikverein.at</strong> and <strong>wienerphilharmoniker.at</strong> open simultaneously. The flagship anniversary concert may sell out within hours. If it does, call Interlude Travel immediately.</p>
-
-      <span class="tl-date">Mar 26, 2027</span>
-      <p class="tl-action">200 years to the day. Vienna. The <em>Ninth Symphony</em>. This is the reason for the journey.</p>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">What to expect</p>
+          <p class="di">Both the WDR Sinfonieorchester and the Gürzenich-Orchester Köln are based at the Philharmonie. Both will have Beethoven anniversary programming throughout the 2026/27 season. For your Day 3 evening (March 12), a Beethoven anniversary program is very likely on offer — the hall is 25 minutes by train from Bonn, and you return the same night.</p>
+          <p class="dl" style="margin-top:1rem">March–May range</p>
+          <p class="di">Both orchestras run full seasons with Beethoven-heavy programming across March–May 2027. The WDR Sinfonieorchester is one of Germany's finest broadcast orchestras; the Gürzenich is one of the oldest concert orchestras in Germany. Both sites publish their full season in late summer — check from autumn 2026.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Kölner Philharmonie</strong><br>Bischofsgartenstr. 1, 50667 Köln<br>One of Germany's leading concert halls, opened 1986.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Via koelner-philharmonie.de. Season programme typically published autumn 2026. Both orchestras also sell direct via their own sites.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.koelner-philharmonie.de" target="_blank" rel="noopener">koelner-philharmonie.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www1.wdr.de/orchester-und-chor/wdrsinfonieorchester/index.html" target="_blank" rel="noopener">WDR Sinfonieorchester <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.guerzenich-orchester.de" target="_blank" rel="noopener">Gürzenich-Orchester <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Kölner+Philharmonie+Bischofsgartenstrasse+1+Cologne" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+</section>
+
+<!-- ══════════════════════════════════════ LINZ ══════════════════════════════════════ -->
+<section class="city-block" id="linz">
+  <div class="city-head">
+    <span class="city-pip pip-linz"></span>
+    <span class="city-name">Linz</span>
+    <span class="city-tagline">— where Beethoven sketched the 8th Symphony</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March 17–18</span>
+  </div>
+
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Brucknerhaus Linz — Complete Beethoven Symphony Cycle</p>
+        <p class="programme-summary"><strong>Bruckner Orchester Linz / Markus Poschner</strong> · All 9 Beethoven symphonies across the 2026/27 season · One concert falls within your March 18 stay</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Book early</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Tue Mar 18 · evening (your Day 9)</span>
+      <span class="dchip dc-tbc">Additional cycle dates Mar–May TBC</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The Cycle</p>
+          <p class="di">Conductor <strong>Markus Poschner</strong> and the Bruckner Orchester Linz are performing all nine Beethoven symphonies across the 2026/27 season as their primary anniversary contribution. The March 18 concert is the one falling within your itinerary — the exact symphony is TBC but will be published with the full season schedule.</p>
+          <p class="dl" style="margin-top:1rem">Beethoven Link</p>
+          <p class="di">In 1812, Beethoven travelled to Linz to stay with his brother Johann, intending to break up an unsuitable relationship. He found himself unable to focus on the family drama and instead sketched the <strong>8th Symphony</strong> here — one of his most playful and jovial works, born from a period of conflict. The irony is pure Beethoven.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Brucknerhaus Linz</strong><br>Untere Donaulände 7, 4010 Linz<br>One of Europe's great concert halls, on the Danube embankment. The spiritual home of Bruckner's music — and the site of a major Beethoven anniversary season.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Full 2026/27 programme expected <strong>autumn 2026</strong>. Book the March 18 concert as soon as dates are published — anniversary concerts in Linz sell out quickly. Direct booking via brucknerhaus.at.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.brucknerhaus.at" target="_blank" rel="noopener">brucknerhaus.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Brucknerhaus+Linz+Untere+Donaulaende+7" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ VIENNA: MUSIKVEREIN ══════════════════════════════════════ -->
+<section class="city-block" id="vienna">
+  <div class="city-head">
+    <span class="city-pip pip-vienna"></span>
+    <span class="city-name">Vienna — Musikverein</span>
+    <span class="city-tagline">— the Golden Hall</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March 19 – May 1</span>
+  </div>
+
+  <!-- VPO Missa solemnis -->
+  <div class="venue urgent">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Vienna Philharmonic / Welser-Möst — Missa solemnis ★</p>
+        <p class="programme-summary"><strong>Beethoven: Missa solemnis in D major, op. 123</strong> · Soloists: Golda Schultz · Deniz Uzun · Daniel Behle · Martin Summer · Wiener Singverein</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-urgent">★ Flagship · Aug 26</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Sat Mar 20 · 15:30</span>
+      <span class="dchip dc-confirmed">Sun Mar 21 · 11:00</span>
+      <span class="dchip dc-flagship">★ Fri Mar 26 · 19:30 — Anniversary</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Confirmed Programme — all three dates</p>
+          <table class="prog-table">
+            <tr><td>Sat Mar 20<br>15:30</td><td><strong>Beethoven: Missa solemnis in D major, op. 123</strong><br>Subscription matinée</td></tr>
+            <tr><td>Sun Mar 21<br>11:00</td><td><strong>Beethoven: Missa solemnis in D major, op. 123</strong><br>Morning concert</td></tr>
+            <tr><td>★ Fri Mar 26<br>19:30</td><td><strong>Beethoven: Missa solemnis in D major, op. 123</strong><br><em>200th anniversary of his death — flagship concert</em></td></tr>
+          </table>
+          <p class="dl" style="margin-top:1rem">Soloists</p>
+          <p class="di"><em>Golda Schultz</em> (soprano) · <em>Deniz Uzun</em> (alto) · <em>Daniel Behle</em> (tenor) · <em>Martin Summer</em> (bass) · <strong>Wiener Singverein</strong> (chorus)<br><strong>Conductor:</strong> Franz Welser-Möst</p>
+          <p class="dl" style="margin-top:1rem">Why the Missa solemnis?</p>
+          <p class="di">Beethoven himself called it "my greatest work." He spent five years writing it — far longer than any other composition. Where the Ninth is Beethoven in public triumph, the Missa is Beethoven alone with God and doubt. Choosing it over the Ninth for the anniversary date is a deliberate, profound artistic statement by Welser-Möst.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Musikverein — Goldener Saal</strong><br>Musikvereinsplatz 1, 1010 Wien<br>Home of the Vienna Philharmonic. The Golden Hall, completed 1870, is widely considered the finest concert hall acoustics in the world.</p>
+          <div class="note-box"><strong>★ Highest booking priority of the entire trip.</strong> General sale opens <strong>August 26, 2026 at 9:00am Vienna time.</strong> Have musikverein.at and wienerphilharmoniker.at open simultaneously. The March 26 concert will sell out quickly — possibly within hours.</div>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets — two routes</span>
+            <strong>1. Musikverein website</strong> (musikverein.at) — opens Aug 26, 2026<br>
+            <strong>2. VPO website</strong> (wienerphilharmoniker.at) — separate allocation, same date<br>
+            If both sell out: contact <strong>Interlude Travel</strong> or <strong>Classic Journeys</strong> who will hold specialist allocations.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.musikverein.at" target="_blank" rel="noopener">musikverein.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.wienerphilharmoniker.at" target="_blank" rel="noopener">wienerphilharmoniker.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://multimedia.musikverein.at/musikfreunde/beethoven-anno-2027/" target="_blank" rel="noopener">Musikverein Beethoven 2027 page <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Igor Levit — All 32 Sonatas -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Igor Levit — All 32 Beethoven Piano Sonatas</p>
+        <p class="programme-summary">Season-long cycle across multiple recitals · <strong>Complete Op. 2 through Op. 111</strong> · Musikverein, 2026/27 season</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Season-long · Watch for dates</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Multiple dates across Mar–May 2027 — watch musikverein.at</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The Project</p>
+          <p class="di">Igor Levit — one of the world's great Beethoven pianists — is performing all 32 piano sonatas across the Musikverein's 2026/27 season in multiple recitals. The sonatas span Beethoven's entire creative life, from the early Op. 2 works written in his mid-twenties to the final Op. 111 (1822), two of the most sublime pieces in all of music. Several recitals will fall within your March–May window. The complete schedule has not yet been published.</p>
+          <p class="dl" style="margin-top:1rem">Op. 111 — the final sonata</p>
+          <p class="di">The last of the 32, in C minor, has just two movements. The second — an arietta — dissolves into trills and silence. Scholars and musicians regard it as one of the most transcendent pieces ever written. Levit performing it live, in the Goldener Saal, in the anniversary year, will be extraordinary.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Musikverein — Goldener Saal or Brahms-Saal</strong><br>Musikvereinsplatz 1, 1010 Wien<br>Recitals may be split between the large Golden Hall and the intimate Brahms-Saal (600 seats).</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Full recital schedule expected when Musikverein publishes its complete 2026/27 programme (autumn 2026). Book individual recital dates as soon as they appear. Levit recitals at the Musikverein sell quickly.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.musikverein.at" target="_blank" rel="noopener">musikverein.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dresden / Gatti — The Ninth -->
+  <div class="venue new">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Staatskapelle Dresden / Daniele Gatti — All 9 Symphonies incl. ★ The Ninth</p>
+        <p class="programme-summary"><strong>"Beethoven. Vier Tage. Neun Sinfonien."</strong> · Four evenings · Symphonies paired with world-premiere commissions · The Ninth on the <em>fourth evening (~April 22)</em></p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-new">★ The Ninth</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-new">Eve 1 · ~Apr 19 · Confirmed</span>
+      <span class="dchip dc-new">Eve 2 · ~Apr 20</span>
+      <span class="dchip dc-new">Eve 3 · ~Apr 21</span>
+      <span class="dchip dc-new">Eve 4 · ~Apr 22 · ★ The Ninth</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Four-Evening Programme</p>
+          <table class="prog-table">
+            <tr><td>Eve 1<br>~Apr 19</td><td><strong>«Aufbruch» — Departure</strong><br>Symphonies Nos. <em>1, 4, 5</em><br>+ New work by Jörg Widmann (world premiere)</td></tr>
+            <tr><td>Eve 2<br>~Apr 20</td><td><strong>«Von Helden und Antihelden» — Heroes &amp; Anti-Heroes</strong><br>Symphonies Nos. <em>2, 3 (Eroica)</em><br>+ New work by Riccardo Panfili (world premiere)</td></tr>
+            <tr><td>Eve 3<br>~Apr 21</td><td><strong>«Naturgesänge» — Songs of Nature</strong><br>Symphonies Nos. <em>6 (Pastoral), 7</em><br>+ New work by Jesús Torres (world premiere)</td></tr>
+            <tr><td>★ Eve 4<br>~Apr 22</td><td><strong>«An die Freude» — Ode to Joy</strong><br>Symphonies Nos. <em>8 &amp; 9 (Choral)</em><br>+ New work by Clara Iannotta (Austrian premiere)</td></tr>
+          </table>
+          <p class="di" style="margin-top:.6rem"><em>Conductor: Daniele Gatti · Orchestra: Sächsische Staatskapelle Dresden</em><br>Vienna leg follows the Dresden home run (Apr 14–17, Semperoper). April 19 is confirmed from wien.info; the subsequent three evenings are estimated based on the four-night consecutive structure.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Context</p>
+          <p class="di">The Staatskapelle Dresden — one of the world's oldest orchestras, founded 1548 — has built its entire 2026/27 season around Beethoven. <strong>Daniele Gatti</strong> is among the most searching Beethoven conductors working today. Each evening pairs symphonies with a new commissioned work in dialogue: contemporary composers responding to Beethoven's voice. The Ninth ("An die Freude") on the fourth evening is the culmination — the Ode to Joy, composed in complete deafness, heard live in Vienna.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            April 19 date confirmed on wien.info — full four-night Vienna schedule expected on musikverein.at in autumn 2026. The Ninth evening (~April 22) will be in high demand. Book all four if you can.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.musikverein.at" target="_blank" rel="noopener">musikverein.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.staatskapelle-dresden.de/en/concerts-and-tickets/beethoven-200/" target="_blank" rel="noopener">staatskapelle-dresden.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VPO / Viotti / Mutter — April -->
+  <div class="venue">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Vienna Philharmonic / Lorenzo Viotti — Anne-Sophie Mutter</p>
+        <p class="programme-summary"><strong>Penderecki: Violin Concerto No. 2</strong> · <strong>Korngold: Sinfonietta op. 5</strong> · With Anne-Sophie Mutter (violin)</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-good">Confirmed — non-Beethoven</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Fri Apr 16 · 19:30</span>
+      <span class="dchip dc-confirmed">Sat Apr 17 · 15:30</span>
+      <span class="dchip dc-confirmed">Sun Apr 18 · 11:00</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Programme — all three dates</p>
+          <table class="prog-table">
+            <tr><td></td><td><strong>Krzysztof Penderecki:</strong> Metamorphoses — Violin Concerto No. 2<br><strong>Erich Wolfgang Korngold:</strong> Sinfonietta, op. 5<br>Soloist: <em>Anne-Sophie Mutter</em> (violin)</td></tr>
+          </table>
+          <p class="di" style="margin-top:.6rem">Not Beethoven — but occurring in the middle of the Dresden symphony cycle week. These dates bracket the Staatskapelle's visit. An extraordinary programme featuring one of the world's great violinists, in Vienna's greatest hall.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Musikverein — Goldener Saal</strong><br>Musikvereinsplatz 1, 1010 Wien<br><strong>Conductor:</strong> Lorenzo Viotti · <strong>Violin:</strong> Anne-Sophie Mutter</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Via wienerphilharmoniker.at and musikverein.at. Anne-Sophie Mutter's VPO appearances sell out quickly — book as soon as available.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.wienerphilharmoniker.at" target="_blank" rel="noopener">wienerphilharmoniker.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VPO / Muti / Beethoven Symphony No. 4 — May -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Vienna Philharmonic / Riccardo Muti — Beethoven Symphony No. 4</p>
+        <p class="programme-summary"><strong>Haydn: Symphony in G, Hob. I:88</strong> · <strong>R. Strauss: Der Bürger als Edelmann</strong> · <strong>Beethoven: Symphony No. 4 in B♭, op. 60</strong></p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Confirmed</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Sat May 8 · confirmed</span>
+      <span class="dchip dc-confirmed">Mon May 10 · confirmed</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Programme — both dates</p>
+          <table class="prog-table">
+            <tr><td></td><td><strong>Joseph Haydn:</strong> Symphony in G major, Hob. I:88<br><strong>Richard Strauss:</strong> Der Bürger als Edelmann — Suite for Orchestra, op. 60<br><strong>Beethoven:</strong> Symphony No. 4 in B♭ major, op. 60<br><em>Conductor: Riccardo Muti</em></td></tr>
+          </table>
+          <p class="di" style="margin-top:.6rem">Muti and the Vienna Philharmonic in Beethoven's 4th — a work that opens with a slow introduction of extraordinary mystery before one of his most exhilarating first movements. Muti at 86 conducting this programme in the Golden Hall will be a privilege. Note the deliberate pairing of Haydn (Beethoven's teacher) with the work that shows how thoroughly Beethoven had transcended him.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Musikverein — Goldener Saal</strong><br>Musikvereinsplatz 1, 1010 Wien<br><strong>Conductor:</strong> Riccardo Muti</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Via wienerphilharmoniker.at and musikverein.at. Muti/VPO evenings are among the most sought-after in Vienna's calendar — book immediately when available.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.wienerphilharmoniker.at" target="_blank" rel="noopener">wienerphilharmoniker.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ VIENNA: KONZERTHAUS ══════════════════════════════════════ -->
+<section class="city-block" id="konzerthaus">
+  <div class="city-head">
+    <span class="city-pip pip-vienna"></span>
+    <span class="city-name">Vienna — Konzerthaus</span>
+    <span class="city-tagline">— home of the Wiener Symphoniker</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March – May 2027</span>
+  </div>
+
+  <!-- Bamberger Symphoniker cycle -->
+  <div class="venue urgent">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Bamberger Symphoniker / Jakub Hrůša — Complete Beethoven Symphonies</p>
+        <p class="programme-summary"><strong>All 9 Beethoven symphonies in chronological order</strong> · Complete cycle across the season including March–May dates · One of the most anticipated Beethoven cycles of 2027</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-urgent">Major cycle — book fast</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Multiple dates Mar–May 2027 · Full schedule TBC</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The Cycle</p>
+          <p class="di">The <strong>Bamberger Symphoniker</strong> under <strong>Jakub Hrůša</strong> are performing all nine Beethoven symphonies in chronological order in their own dedicated cycle at the Konzerthaus — separately from their tour to Vienna. This is one of three complete symphony cycles the Bamberger are performing in 2026/27, also including Bamberg itself, the Rhineland, and Prague, all as part of their anniversary commitment to Beethoven. The Konzerthaus has confirmed this is their central Beethoven anniversary series.</p>
+          <p class="dl" style="margin-top:1rem">About Hrůša</p>
+          <p class="di">Jakub Hrůša is one of the most celebrated conductors of his generation — Chief Conductor of the Bamberger since 2016, Music Director at the Royal Opera House, and Principal Conductor-Designate of the Czech Philharmonic. His Beethoven has been described as combining structural clarity with genuine emotional urgency. This cycle in Vienna's other great hall, alongside the Staatskapelle Dresden's cycle at the Musikverein, means Vienna will have two complete Beethoven symphony cycles running near-simultaneously in spring 2027.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Wiener Konzerthaus — Großer Saal</strong><br>Lothringerstraße 20, 1030 Wien<br>Vienna's second great concert hall, home of the Wiener Symphoniker. 1,865 seats. Opened 1913 — its inaugural concert featured Beethoven's Ninth.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Individual concert dates expected in the Konzerthaus season announcement (published March 2026 — season brochure already available; specific concert dates for the Bamberger cycle TBC). Book as soon as individual dates appear. Konzerthaus member advance booking available.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://konzerthaus.at" target="_blank" rel="noopener">konzerthaus.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.bamberger-symphoniker.de" target="_blank" rel="noopener">bamberger-symphoniker.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Wiener+Konzerthaus+Lothringerstrasse+20+Vienna" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Belcea / Quatuor Ébène string quartets -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Belcea Quartet &amp; Quatuor Ébène — Complete Beethoven String Quartets</p>
+        <p class="programme-summary"><strong>All 16 Beethoven string quartets</strong> across six concerts · Two of the world's great chamber ensembles sharing the cycle · Konzerthaus 2026/27 season</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Season-long · Watch for dates</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">6 concerts spread across 2026/27 season · some in Mar–May window</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The Cycle</p>
+          <p class="di">The Konzerthaus has commissioned both the <strong>Belcea Quartet</strong> and the <strong>Quatuor Ébène</strong> — two of the world's supreme chamber ensembles — to jointly traverse all 16 of Beethoven's string quartets across six concerts in the 2026/27 season. This is one of the most ambitious chamber music projects of the anniversary year. The late quartets (Op. 127, 130, 131, 132, 135) are widely regarded as the summit of the genre — music that anticipates Schubert, Brahms, and the entire 20th century.</p>
+          <p class="dl" style="margin-top:1rem">The Late Quartets</p>
+          <p class="di">Op. 131 in C# minor has seven movements played without a break. Schubert asked to hear it on his deathbed. Op. 132 contains the "Heiliger Dankgesang" — the "Holy Song of Thanksgiving" — slow movement that Beethoven wrote after recovering from illness. Hearing either in Vienna in 2027 will be an experience unlike any other.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Wiener Konzerthaus</strong><br>Lothringerstraße 20, 1030 Wien<br>Likely the Mozart-Saal (704 seats) or Schubert-Saal (366 seats) for chamber concerts.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Subscription and individual concert booking via konzerthaus.at. The Konzerthaus 2026/27 season is already announced — watch for individual concert dates within the cycle. Late quartet evenings will sell quickly.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://konzerthaus.at" target="_blank" rel="noopener">konzerthaus.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Wiener+Konzerthaus+Lothringerstrasse+20+Vienna" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rudolf Buchbinder — All Piano Sonatas -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Rudolf Buchbinder — All Beethoven Piano Sonatas</p>
+        <p class="programme-summary"><strong>All 32 Beethoven piano sonatas</strong> across a subscription cycle · Buchbinder celebrating his 80th birthday in Dec 2026 · Konzerthaus 2026/27 season</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Season-long · Watch for dates</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Subscription cycle · specific dates TBC · some in Mar–May window</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The Cycle</p>
+          <p class="di"><strong>Rudolf Buchbinder</strong> — one of the supreme Beethoven pianists of our era, now in his eighties — is performing all 32 piano sonatas at the Konzerthaus as a subscription cycle across the 2026/27 season. He celebrated his 80th birthday in December 2026, and the Konzerthaus has built the cycle around that occasion and the anniversary year. Buchbinder has recorded and performed the complete sonatas many times over decades — this cycle, at this point in his life and career, will be something rare and unrepeatable.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Wiener Konzerthaus — Großer Saal</strong><br>Lothringerstraße 20, 1030 Wien</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Subscription and individual bookings via konzerthaus.at. Note: the Musikverein also has Igor Levit performing all 32 sonatas — for the full anniversary experience, consider Buchbinder at the Konzerthaus alongside Levit at the Musikverein.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://konzerthaus.at" target="_blank" rel="noopener">konzerthaus.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Wiener+Konzerthaus+Lothringerstrasse+20+Vienna" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Missa solemnis — Jordi Savall -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Jordi Savall / Le Concert des Nations — Missa solemnis</p>
+        <p class="programme-summary"><strong>Beethoven: Missa solemnis op. 123</strong> on <em>period instruments</em> · Savall and La Capella Nacional de Catalunya · Konzerthaus 2026/27 season</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-high">Season · dates TBC</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">2026/27 season · exact date TBC</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">What makes this remarkable</p>
+          <p class="di">The Konzerthaus has also programmed the Missa solemnis with <strong>Jordi Savall</strong> conducting <strong>Le Concert des Nations</strong> and <strong>La Capella Nacional de Catalunya</strong> — period instrument forces. Hearing the Missa solemnis on instruments of Beethoven's own era is a completely different experience: rawer textures, more exposed string tone, a different kind of grandeur. Savall is the world's supreme historical performance practitioner. Having both the VPO (modern instruments) and Savall (period instruments) performing the same monumental work in the same city in the same year is an extraordinary coincidence.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Wiener Konzerthaus — Großer Saal</strong><br>Lothringerstraße 20, 1030 Wien</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Via konzerthaus.at. Exact date TBC — the Konzerthaus 2026/27 season has been announced but individual programming dates not yet confirmed for all events.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://konzerthaus.at" target="_blank" rel="noopener">konzerthaus.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Wiener+Konzerthaus+Lothringerstrasse+20+Vienna" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ VIENNA: STAATSOPER & OTHERS ══════════════════════════════════════ -->
+<section class="city-block" id="staatsoper">
+  <div class="city-head">
+    <span class="city-pip pip-vienna"></span>
+    <span class="city-name">Vienna — Staatsoper &amp; Other Venues</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">March – May 2027</span>
+  </div>
+
+  <!-- Fidelio — Staatsoper -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Wiener Staatsoper — Fidelio</p>
+        <p class="programme-summary"><strong>Beethoven: Fidelio, op. 72</strong> · Beethoven's only opera · Almost certain to be staged during the anniversary year · Details TBC with season announcement</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-tbc">Anticipated — season TBC</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Spring 2027 · exact dates TBC summer 2026</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">About Fidelio</p>
+          <p class="di">Beethoven's only opera — about political imprisonment, faithfulness, and liberation — premiered at the Theater an der Wien on November 20, 1805, with Napoleonic troops occupying Vienna and the aristocratic audience largely fled. Beethoven revised it twice; the final version (1814) is one of the most powerful works in the operatic repertoire. The story: Leonore disguises herself as a prison guard ("Fidelio") to rescue her husband Florestan from unjust imprisonment. It ends with the prisoners released into light and a hymn to freedom.</p>
+          <p class="di" style="margin-top:.6rem">In 2020, for Beethoven's 250th birthday, Fidelio was staged at the Vienna Staatsoper and at the Theater an der Wien. For the 200th anniversary of his death in 2027, a staging at the Staatsoper is essentially certain.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Wiener Staatsoper</strong><br>Opernring 2, 1010 Wien<br>One of the world's great opera houses, on the Ringstrasse.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            2026/27 season announced summer 2026. Watch wiener-staatsoper.at for Fidelio staging dates. Standing-room tickets available on performance days from €10 — a legendary Viennese tradition.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.wiener-staatsoper.at" target="_blank" rel="noopener">wiener-staatsoper.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Wiener+Staatsoper+Opernring+2+Vienna" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theater an der Wien -->
+  <div class="venue high">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Theater an der Wien — Anniversary Programming</p>
+        <p class="programme-summary">Where the 5th &amp; 6th Symphonies premiered together in 1808 · Fidelio premiered here in 1805 · Strong anniversary programming expected · Season TBC</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-tbc">Season TBC mid-2026</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-tbc">Mar–May 2027 · season announcement expected mid-2026</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Historical significance</p>
+          <p class="di">On December 22, 1808, Beethoven held a concert at the Theater an der Wien that is the most extraordinary single evening in the history of music. In a freezing hall, over four hours, with an unrehearsed orchestra, he premiered: the <strong>5th Symphony, the 6th Symphony (Pastoral), the 4th Piano Concerto, the Choral Fantasy, and the Ah! Perfido aria</strong> — all on the same programme. He also premiered sections of the Missa solemnis. The 5th and 6th Symphonies on the same night, in this hall.</p>
+          <p class="di" style="margin-top:.6rem">Fidelio also premiered here in 1805, with Beethoven living in the theatre itself for a period. The building is still active as an opera and concert venue.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Theater an der Wien</strong><br>Linke Wienzeile 6, 1060 Wien</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            2026/27 season typically announced mid-2026. Watch theater-wien.at for major Beethoven anniversary programming — a Fidelio staging here would carry special historical weight.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.theater-wien.at" target="_blank" rel="noopener">theater-wien.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Theater+an+der+Wien+Linke+Wienzeile+6" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Church concerts + Hofburgkapelle -->
+  <div class="venue">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Peterskirche · Karlskirche · Hofburgkapelle — Church &amp; Sacred Concerts</p>
+        <p class="programme-summary"><strong>Chamber Beethoven, Sundays at the Hofburg</strong> · Vienna Boys' Choir with VPO members · Regular evening concerts through the anniversary season</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-info">Walk-in / recurring</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="dates-row">
+      <span class="dchip dc-confirmed">Hofburgkapelle: every Sunday · 9:15</span>
+      <span class="dchip dc-confirmed">Peterskirche: most evenings year-round</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Hofburgkapelle — Sundays</p>
+          <p class="di">Every Sunday at 9:15am, the <strong>Vienna Boys' Choir</strong>, members of the <strong>Vienna Philharmonic</strong>, and the Vienna State Opera men's chorus perform Holy Mass at the Imperial Chapel inside the Hofburg. This tradition stretches back centuries — Beethoven attended many such masses. Standing tickets available on the day from €10; seated tickets book in advance. Your Sundays in Vienna: March 21, March 28, April 4, April 11, April 18, April 25.</p>
+          <p class="dl" style="margin-top:1rem">Peterskirche — Evening Chamber Concerts</p>
+          <p class="di">St. Peter's Church on the Graben runs several Beethoven, Mozart, and Schubert chamber concerts weekly year-round. Programme includes string quartets, piano trios, and solo recitals. No advance booking required for many performances — simply arrive. An ideal intimate evening between the grand orchestral events.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Karlskirche</p>
+          <p class="di"><strong>Karlskirche (St. Charles's Church)</strong> — one of Vienna's great Baroque spaces on Karlsplatz — runs its own concert series. The combination of the Baroque interior and chamber Beethoven is atmospheric and unusual.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            Hofburgkapelle: hofmusikkapelle.gv.at (advance seated) or on-the-day standing.<br>Peterskirche / Karlskirche: vienna-concert.com or on-the-day.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.hofmusikkapelle.gv.at" target="_blank" rel="noopener">hofmusikkapelle.gv.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.vienna-concert.com" target="_blank" rel="noopener">vienna-concert.com <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Hofburgkapelle+Vienna" target="_blank" rel="noopener">📍 Hofburgkapelle</a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Peterskirche+Vienna+Graben" target="_blank" rel="noopener">📍 Peterskirche</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specialist travel -->
+  <div class="vdivider"></div>
+  <div class="venue">
+    <div class="card-hd" onclick="toggleDetail(this)">
+      <div class="card-hd-left">
+        <p class="venue-title">Specialist Ticket Services — Interlude Travel &amp; Classic Journeys</p>
+        <p class="programme-summary">For sold-out concerts and combined ticket + accommodation packages · Contact now for March 26 and Dresden Ninth cycle</p>
+      </div>
+      <div class="card-hd-right">
+        <span class="badge b-good">Contact now</span>
+        <span class="toggle-hint">expand ↓</span>
+      </div>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">Interlude Travel</p>
+          <p class="di">A UK-based classical music travel specialist. Can procure allocations for the March 26 Missa solemnis and the Dresden Ninth cycle that may be unavailable through public channels. They are already planning 2027 anniversary packages. <strong>Worth contacting now</strong> to register interest.</p>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.interlude.travel" target="_blank" rel="noopener">interlude.travel <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+          </div>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Classic Journeys</p>
+          <p class="di">Another classical travel specialist building anniversary packages. Backup route for flagship sold-out concerts. Also a useful contact for Vienna accommodation during the high-demand March 26 window.</p>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.classicjourneys.co.uk" target="_blank" rel="noopener">classicjourneys.co.uk <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 </main>
 
+<!-- ══════════════════════════════════════ FESTIVALS ══════════════════════════════════════ -->
+<section class="city-block main" id="festivals" style="max-width:960px;margin:0 auto;padding:2.5rem 2rem 5rem;padding-top:0">
+  <div class="city-head">
+    <span class="city-pip pip-festival"></span>
+    <span class="city-name" style="color:var(--goldg)">Beethoven Festivals</span>
+    <span class="city-tagline">— dedicated multi-day events, 2027</span>
+    <div class="city-filler"></div>
+    <span class="city-dates">May & September 2027</span>
+  </div>
+
+  <!-- Leipzig -->
+  <div class="fest-card flagship">
+    <div class="fest-hd" onclick="toggleDetail(this)">
+      <div>
+        <p class="fest-title">Beethoven Festival Leipzig — Gewandhaus zu Leipzig</p>
+        <p class="fest-summary"><strong>All 9 symphonies</strong> conducted by Andris Nelsons · Soloists: Lang Lang, Igor Levit, Leonidas Kavakos, Gautier Capuçon · Chamber music cycle · World premieres by Jörg Widmann · Crossover &amp; participatory formats</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0">
+        <span class="badge b-high">★ Major festival</span>
+        <span class="toggle-hint" style="font-size:.65rem;color:var(--txf)">expand ↓</span>
+      </div>
+    </div>
+    <div class="fest-dates-band">
+      <span class="fest-dates-label">Dates</span>
+      <span class="fest-dates-val">May 9 – 23, 2027</span>
+      <span class="fest-dates-loc">Gewandhaus, Leipzig · 90 min from Vienna by air</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">What it is</p>
+          <p class="di">The centrepiece of the Gewandhaus zu Leipzig's 2026/27 season — a 15-day dedicated Beethoven festival marking the 200th anniversary of his death. The Gewandhaus has a unique historical relationship with Beethoven: it was the first orchestra in the world to perform all nine of his symphonies as a complete cycle during his lifetime, and it premiered the Triple Concerto, Piano Concerto No. 5 "Emperor," and other major works.</p>
+          <p class="dl" style="margin-top:1rem">Three festival pillars</p>
+          <p class="di"><strong>1. Symphonies &amp; concertos</strong> — all 9 symphonies with Andris Nelsons and the Gewandhausorchester, featuring soloists Lang Lang (piano), Igor Levit (piano), Leonidas Kavakos (violin), Gautier Capuçon (cello), Pablo Ferrandes (cello), and Augustin Hadelich (violin).<br><br><strong>2. Chamber music</strong> — an outstanding series of string quartets, piano trios, and sonata recitals by leading ensembles and soloists.<br><br><strong>3. Contemporary perspectives</strong> — crossover, jazz, and electronic reimaginings of Beethoven, plus community participation projects including the Stegreif Orchestra and the Ninth Symphony in a Liszt arrangement for two pianos and timpani.</p>
+          <p class="dl" style="margin-top:1rem">World premieres</p>
+          <p class="di">Jörg Widmann has written a new orchestral work taking Beethoven's late fragment <em>Overture on B-A-C-H</em> as its starting point — a chain of tradition running Bach → Beethoven → Widmann. Michael Lentz has written a new libretto for Beethoven's <em>Egmont</em> incidental music, narrated by Tobias Moretti.</p>
+          <p class="dl" style="margin-top:1rem">Note on itinerary fit</p>
+          <p class="di">The festival begins May 9 — just 8 days after your current window closes on May 1. Worth seriously considering as an extension, especially since you will have heard the Ninth in Vienna (~Apr 22) and would arrive in Leipzig for symphonies, concertos, and chamber music in festival atmosphere.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Gewandhaus zu Leipzig</strong><br>Augustusplatz 8, 04109 Leipzig<br>One of the world's great concert halls — third of its name, opened 1981. The original 1781 Gewandhaus was the world's first purpose-built public concert hall.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets</span>
+            <strong>General sale opens June 27, 2026.</strong> Season ticket holders and Gewandhauscard holders from June 13, 2026.<br>
+            Email: ticket@gewandhaus.de · Tel: +49 341 1270 280
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.gewandhausorchester.de/en/beethoven-festival-2027/" target="_blank" rel="noopener">gewandhausorchester.de — Festival page <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.gewandhausorchester.de/en/2026-27-season/" target="_blank" rel="noopener">2026/27 season overview <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Gewandhaus+Leipzig+Augustusplatz+8" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beethovenfest Bonn -->
+  <div class="fest-card">
+    <div class="fest-hd" onclick="toggleDetail(this)">
+      <div>
+        <p class="fest-title">Beethovenfest Bonn — 200th Anniversary Edition</p>
+        <p class="fest-summary">The world's oldest Beethoven festival, founded 1845 · Annual September festival in Beethoven's birthplace · <strong>2027 is its most significant edition since its founding year</strong> · ~80 concerts across Bonn and the region</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0">
+        <span class="badge b-tbc">September 2027</span>
+        <span class="toggle-hint" style="font-size:.65rem;color:var(--txf)">expand ↓</span>
+      </div>
+    </div>
+    <div class="fest-dates-band">
+      <span class="fest-dates-label">Dates</span>
+      <span class="fest-dates-val">September 2027 (exact dates TBC)</span>
+      <span class="fest-dates-loc">Bonn, Germany — Beethovenhalle &amp; city venues</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">History</p>
+          <p class="di">The Beethovenfest was first held in 1845 to mark the 75th anniversary of Beethoven's birth — with Franz Liszt and Louis Spohr conducting, Queen Victoria and Alexander von Humboldt in attendance. It has been held annually ever since, making it the world's oldest dedicated Beethoven festival. The 2027 edition marks the 200th anniversary of his death: the most significant milestone in the festival's 182-year history.</p>
+          <p class="dl" style="margin-top:1rem">Character</p>
+          <p class="di">Unlike Leipzig's more traditional approach, the Beethovenfest is explicitly forward-looking — every year's programme is built around a contemporary theme connecting Beethoven to present-day artistic questions. Alongside major orchestral concerts, there are cross-genre projects, jazz, experimental formats, talks, exhibitions, and workshops. Around 80 events across three weeks, at the Beethovenhalle, the Beethoven-Haus courtyard, the La Redoute ballroom, and outdoor venues.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Multiple venues across Bonn</strong><br>Primary: Beethovenhalle, Wachsbleiche 1<br>Also: Beethoven-Haus Kammermusiksaal, La Redoute, Bundeskunsthalle, and outdoor sites.</p>
+          <div class="ticket-box">
+            <span class="tb-label">Tickets &amp; Programme</span>
+            Programme announced typically spring of the festival year. Watch beethovenfest.de from early 2027 for the full lineup. Specialist tour operators (ACE Cultural Tours confirmed a September 2027 tour to the festival) can also arrange access.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.beethovenfest.de/en" target="_blank" rel="noopener">beethovenfest.de <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.aceculturaltours.co.uk/tours/beethoven-festival-in-bonn-bfbn-27" target="_blank" rel="noopener">ACE Cultural Tours — Beethovenfest tour <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Beethovenhalle+Bonn+Wachsbleiche+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Musikverein Spring Festival -->
+  <div class="fest-card">
+    <div class="fest-hd" onclick="toggleDetail(this)">
+      <div>
+        <p class="fest-title">Musikverein Spring Festival — Vienna (2027 theme TBC)</p>
+        <p class="fest-summary">Annual multi-week festival at the Musikverein, typically <strong>late April – early May</strong> · 2026 edition was explicitly Beethoven-themed ("Beethovens Spazierstock") · 2027 almost certainly Beethoven again given the anniversary · World-class lineup expected</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0">
+        <span class="badge b-tbc">~Apr–May 2027 · TBC</span>
+        <span class="toggle-hint" style="font-size:.65rem;color:var(--txf)">expand ↓</span>
+      </div>
+    </div>
+    <div class="fest-dates-band">
+      <span class="fest-dates-label">Estimated dates</span>
+      <span class="fest-dates-val">~Late April – early May 2027</span>
+      <span class="fest-dates-loc">Musikverein, Vienna — all halls</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">2026 edition as reference</p>
+          <p class="di">The Musikverein runs its annual spring festival in April–May each year, themed around an object from its own collections. The 2026 edition — titled <em>"Beethovens Spazierstock"</em> (Beethoven's Walking Stick) — ran April 17 to May 3 and was built around an actual walking stick from Beethoven's collection held by the Gesellschaft der Musikfreunde. It featured Rattle, Thielemann, Järvi, Pappano, Petrenko, and Nelsons. With the 200th anniversary of Beethoven's death in 2027, the thematic focus is almost certain to be Beethoven-centred again — but the exact theme and programme have not yet been announced.</p>
+          <p class="dl" style="margin-top:1rem">What to expect</p>
+          <p class="di">Two to three weeks of concentrated programming across all Musikverein halls — Golden Hall, Brahms-Saal, and the four New Halls — featuring the world's leading conductors, orchestras, and soloists. The festival typically includes evening orchestral concerts, afternoon chamber recitals, late-night contemporary music, literary events, and family programmes. Given that the Musikverein already has the Missa solemnis (March 20–26) and the Dresden cycle (April 19–22) confirmed, the spring festival would follow immediately and extend the anniversary season into May.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Venue</p>
+          <p class="di"><strong>Musikverein — all halls</strong><br>Musikvereinsplatz 1, 1010 Wien<br>The festival uses the Golden Hall, Brahms-Saal, and four New Halls (Glass, Metal, Stone, Wooden) simultaneously.</p>
+          <div class="ticket-box">
+            <span class="tb-label">When to watch</span>
+            The 2027 festival theme and programme will be announced when the Musikverein publishes its 2026/27 season — expected <strong>autumn 2026</strong>. Sign up for the Musikverein newsletter now to be notified.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://musikverein.at/en" target="_blank" rel="noopener">musikverein.at <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://multimedia.musikverein.at/musikfreunde/beethoven-anno-2027/" target="_blank" rel="noopener">Musikverein Beethoven 2027 page <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink maps" href="https://maps.google.com/?q=Musikverein+Wien+Musikvereinsplatz+1" target="_blank" rel="noopener">📍 Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beethoven27 EU Project -->
+  <div class="fest-card">
+    <div class="fest-hd" onclick="toggleDetail(this)">
+      <div>
+        <p class="fest-title">Beethoven27 — EU-wide Anniversary Project</p>
+        <p class="fest-summary"><strong>27 EU cities · 27 key Beethoven works · 2024–2027</strong> · Le Concert Olympique / Jan Caeyers · Late works in 2027 including the Ninth &amp; Missa solemnis · Bonn is the founding city</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0">
+        <span class="badge b-info">EU network · ongoing</span>
+        <span class="toggle-hint" style="font-size:.65rem;color:var(--txf)">expand ↓</span>
+      </div>
+    </div>
+    <div class="fest-dates-band">
+      <span class="fest-dates-label">Window</span>
+      <span class="fest-dates-val">Running 2024–2027 across Europe</span>
+      <span class="fest-dates-loc">27 EU cities incl. Bonn · Germany &amp; Austria stops TBC</span>
+    </div>
+    <div class="detail">
+      <div class="detail-grid">
+        <div class="detail-block">
+          <p class="dl">The project</p>
+          <p class="di">Beethoven27 brings the Belgian period-instrument orchestra <strong>Le Concert Olympique</strong> under conductor <strong>Jan Caeyers</strong> to 27 EU cities, performing 27 key Beethoven works across 2024–2027. The programming follows Beethoven's career chronologically: early works in 2025, mature works in 2026, and in 2027 the <em>late works</em> — the Ninth Symphony, the Missa solemnis, the late string quartets. The goal is to gather at least 27,000 listeners across Europe and carry "a universal message of peace" beyond the EU's borders.</p>
+          <p class="di" style="margin-top:.6rem">Bonn is the founding city — the chamber music concerts launched there and return in 2027. Other Germany and Austria stops are expected but not yet confirmed for the March–May window. Watch beethoven27.com for the full 2027 schedule.</p>
+        </div>
+        <div class="detail-block">
+          <p class="dl">Links</p>
+          <p class="di">The central listing site for events across all 27 cities. Also worth checking the Beethoven-Haus Bonn site (beethoven.de) for their specific Beethoven27 concert dates.</p>
+          <div class="ticket-box">
+            <span class="tb-label">How to follow</span>
+            Bookmark beethoven27.com and check regularly — 2027 city dates are being confirmed through 2026. The late-works concerts are the most significant and should be announced by autumn 2026.
+          </div>
+          <div class="links-row">
+            <a class="vlink primary" href="https://www.beethoven27.com" target="_blank" rel="noopener">beethoven27.com <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+            <a class="vlink" href="https://www.beethoven.de" target="_blank" rel="noopener">beethoven.de — Bonn hub <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 <footer>
-  <em>"Music is a higher revelation than all wisdom and philosophy."</em>
-  Beethoven Pilgrimage 2027 · Prepared June 2026 · Four travelers · Bonn to Vienna
+  <span class="fq">"Music is a higher revelation than all wisdom and philosophy."</span>
+  <span class="fm">Beethoven Pilgrimage 2027 · Updated June 2026 · March 10 – May 1 · All concerts Germany &amp; Austria</span>
 </footer>
 
+<script>
+function toggleDetail(header) {
+  const detail = header.parentElement.querySelector('.detail');
+  const hint = header.querySelector('.toggle-hint');
+  if (!detail) return;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open');
+  if (hint) hint.textContent = isOpen ? 'expand ↓' : 'collapse ↑';
+  header.parentElement.style.background = isOpen ? '' : 'var(--bg3)';
+}
+
+// Sticky nav active state
+const sections = document.querySelectorAll('section.city-block, section#festivals');
+const navBtns = document.querySelectorAll('.nav-btn');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id });
+  navBtns.forEach(b => {
+    b.classList.remove('active');
+    if (b.getAttribute('href') === '#' + current) b.classList.add('active');
+  });
+}, {passive: true});
+</script>
 </body>
 </html>

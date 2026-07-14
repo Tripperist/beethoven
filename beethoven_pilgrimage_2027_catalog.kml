@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Beethoven Pilgrimage 2027 — Bonn to Vienna (Catalog Edition)</name>
+    <description><![CDATA[
+      A visual companion to the Beethoven Pilgrimage 2027 Catalog (tripperist.github.io/beethoven/catalog.html).
+      Sights carry no fixed date — the itinerary order is flexible and subject to change.
+      Concerts and performances carry their real, confirmed (or clearly marked tentative) event dates,
+      not itinerary day numbers. Click through from any placemark to the full catalog entry.
+    ]]></description>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  STYLES                                                  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Core Beethoven sites (gold/blue) -->
+    <Style id="core-pin">
+      <IconStyle>
+        <color>ffb8860b</color>
+        <scale>1.2</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+
+    <!-- Extended / decompression / Wachau sites (green) -->
+    <Style id="extended-pin">
+      <IconStyle>
+        <color>ff1f4e79</color>
+        <scale>1.2</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.9</scale></LabelStyle>
+    </Style>
+
+    <!-- Concert venues, no confirmed date yet (music note) -->
+    <Style id="concert-pin">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/music.png</href></Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Confirmed flagship events / anniversary dates (red star) -->
+    <Style id="anniversary-pin">
+      <IconStyle>
+        <scale>1.6</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href></Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Off-route / wider anniversary network (gray) -->
+    <Style id="network-pin">
+      <IconStyle>
+        <color>ff888888</color>
+        <scale>1.0</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><scale>0.85</scale></LabelStyle>
+    </Style>
+
+    <!-- Pilgrimage route line -->
+    <Style id="route">
+      <LineStyle>
+        <color>99ffaa00</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  BONN  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Bonn City Centre — Arrival</name>
+      <description><![CDATA[
+        Your starting point. Bonn is a gentle, walkable city on the west bank of the Rhine — the birthplace of Beethoven and, for centuries, seat of the Archbishop-Electors of Cologne. Settle in with an evening walk along the Rhine promenade and a Rhenish dinner. The journey begins quietly here.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-arrival">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.0982,50.7374,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethoven-Haus Bonn (Birthplace)</name>
+      <description><![CDATA[
+        Bonngasse 20 — the house where Ludwig van Beethoven was born on or around December 16, 1770. Now one of the world's great composer museums, it holds original manuscripts in his own hand, his remarkable collection of ear trumpets (made as his deafness progressed), the Broadwood grand piano gifted to him by the London makers, and a lock of his hair. Expect a major 200th-anniversary exhibition running through 2027 — allow a full morning. This is the heart of the pilgrimage's first act.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-beethovenhaus">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.0977,50.7333,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Bonn Minster / St. Remigius Church (Baptism)</name>
+      <description><![CDATA[
+        Two significant Beethoven sacred sites in close proximity. <b>Bonn Minster (Bonner Münster)</b> — the great Gothic-Romanesque minster where the teenage Beethoven served as court organist; playing here was one of his first professional musical roles, and the baptismal register entry still exists. <b>St. Remigius Church</b> — the parish church where Ludwig van Beethoven was baptized on December 17, 1770, the day after his presumed birth date. A humble but profoundly significant stop: the earliest documented moment of his existence.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-minster">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.0989,50.7325,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethoven Monument, Münsterplatz</name>
+      <description><![CDATA[
+        The first quiet encounter with Beethoven's city. An evening walk to this monumental statue in the heart of Bonn's old town sets the tone for the entire journey.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-monument">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.0986,50.7330,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Kurfürstliches Schloss (Electoral Palace), Bonn</name>
+      <description><![CDATA[
+        Now the main building of the University of Bonn, this was the seat of the Archbishop-Elector of Cologne — the court where the young Beethoven served as a musician from age 12. His father Johann also worked here as a court tenor. Walking these grounds, you walk the world of Beethoven's adolescence, the political and cultural environment that shaped his earliest ambitions.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-electoral-palace">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.0993,50.7358,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Drachenfels</name>
+      <description><![CDATA[
+        The ruined castle atop the Drachenfels hill above the Rhine, just south of Bonn. Beethoven climbed here in the autumn of 1792, just weeks before his departure for Vienna — a farewell gesture to the landscape of his youth. The view over the Rhine from the ruins is extraordinary: the same view Beethoven saw as a young man about to leave home forever.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-drachenfels">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.1908,50.6598,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethovenhalle Bonn — Beethoven Orchester Bonn</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Friday, March 25, 2027, 19:30 — Missa Solemnis</b><br/><br/>
+        Bonn's own concert hall and orchestra, home turf of the Freitagskonzert series. <b>Confirmed:</b> Friday, March 25, 2027, 19:30 — the Beethoven Orchester Bonn performs the <b>Missa Solemnis</b> with soprano Chen Reiss, the season's liturgical centrepiece for the 200th anniversary of Beethoven's death — performed, fittingly, in his hometown. General public booking opened June 26, 2026 and is live now. Falls just outside the current Day 1–3 Bonn window — worth weighing whether the itinerary should stretch to catch it.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#bonn-beethovenhalle">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#anniversary-pin</styleUrl>
+      <TimeStamp><when>2027-03-25</when></TimeStamp>
+      <Point><coordinates>7.1013,50.7268,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  COLOGNE  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Kölner Philharmonie — Concert</name>
+      <description><![CDATA[
+        <b>[TENTATIVE — no confirmed date yet]</b><br/><br/>
+        One of Germany's premier concert halls, 25–30 minutes by train from Bonn, home to the WDR Sinfonieorchester and the Gürzenich-Orchester. Anniversary programming is expected — a concert here would ideally sit early in the biographical arc: Beethoven in his first voice, before deafness, before the heroic style, full of promise and searching energy — Op. 1 Piano Trios, early piano sonatas, or chamber music from the Bonn and early Vienna years. Exact 2027 programme not yet published; check from autumn 2026.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#cologne-philharmonie">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <Point><coordinates>6.9603,50.9382,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Cologne Cathedral (Kölner Dom)</name>
+      <description><![CDATA[
+        One of the supreme achievements of Gothic architecture — begun in 1248, completed in 1880. Beethoven knew this city well; Cologne was the seat of the Elector he served. Standing before the Dom, you understand the scale of the world Beethoven inhabited: the Catholic Rhine, ancient and grand, the backdrop against which his secular, revolutionary music took shape.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#cologne-cathedral">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>6.9583,50.9413,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  KOBLENZ & THE RHINE GORGE  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Deutsches Eck (German Corner), Koblenz</name>
+      <description><![CDATA[
+        The dramatic promontory where the Mosel meets the Rhine — one of the great geographical moments of the German Rhineland. Koblenz was a significant city in the Electoral world Beethoven inhabited. The confluence of the two rivers, with the fortress of Ehrenbreitstein rising across the water, is best seen at dusk.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#koblenz-eck">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.6082,50.3639,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Ehrenbreitstein Fortress, Koblenz</name>
+      <description><![CDATA[
+        One of the largest preserved fortresses in Europe, overlooking the confluence of the Rhine and Moselle. Take the cable car across the river for panoramic views. It was occupied by French troops in Beethoven's era — the same revolutionary France whose ideals initially inspired him to dedicate his Third Symphony to Napoleon, before angrily retracting the dedication.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#koblenz-fortress">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.6158,50.3636,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Rhine Gorge — Loreley Rock</name>
+      <description><![CDATA[
+        The stretch of the Rhine between Koblenz and Rüdesheim — a UNESCO World Heritage landscape of castle-crowned crags, vineyard terraces, and the legendary Loreley rock at its narrowest and most treacherous point. This is the Romantic landscape that the poets, painters, and composers of Beethoven's era mythologised. Best seen slowly, from a boat, with no other agenda.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#rhine-loreley">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.7236,50.1328,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Bacharach (Rhine Gorge stop — recommended)</name>
+      <description><![CDATA[
+        A genuinely medieval wine village mid-gorge, less touristy than Rüdesheim. Burg Stahleck castle sits above the town. Good for a lunch stop and a 1–2 hour wander before continuing south by train. The more characterful of the two disembarkation options.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#rhine-bacharach">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.7669,50.0572,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Rüdesheim am Rhein (Rhine Gorge stop — alternative)</name>
+      <description><![CDATA[
+        Southern end of the Rhine Gorge. A well-known, somewhat busier wine town. A reasonable lunch stop before the train south toward Regensburg or Heidelberg if Bacharach doesn't fit the schedule.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#rhine-ruedesheim">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>7.9264,49.9797,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  HEIDELBERG  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Heidelberg Castle</name>
+      <description><![CDATA[
+        The great ruined castle above Heidelberg — one of the defining images of German Romanticism, built around exactly the aesthetic the movement prized: the glorious fragment, nature reclaiming human ambition. The poets and philosophers who studied at Heidelberg University — Hegel, Brentano, von Arnim — were Beethoven's direct intellectual contemporaries.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#heidelberg-castle">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>8.7153,49.4102,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Philosophenweg (Philosophers' Walk), Heidelberg</name>
+      <description><![CDATA[
+        The famous hillside path above Heidelberg, with views across the Neckar valley to the castle ruins, named for the university philosophers who walked here in contemplation. Walking it is to inhabit the mental world of Beethoven's era — the Romantic generation processing Kant, Schiller, and Goethe.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#heidelberg-philosophenweg">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>8.7106,49.4155,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  REGENSBURG  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Dom St. Peter, Regensburg</name>
+      <description><![CDATA[
+        One of the finest Gothic cathedrals in Germany. Allow 1–2 hours on arrival.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#regensburg-dom">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>12.0972,49.0195,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Steinerne Brücke (Stone Bridge), Regensburg</name>
+      <description><![CDATA[
+        A 12th-century bridge still in use today — one of the oldest surviving bridges in Germany. A natural evening walk along the Danube.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#regensburg-bridge">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>12.0934,49.0213,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Wurstkuchl, Regensburg</name>
+      <description><![CDATA[
+        One of the oldest sausage kitchens in the world, sitting beside the Stone Bridge on the Danube. A late breakfast here is the defining Regensburg experience.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#regensburg-wurstkuchl">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>12.0936,49.0218,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Weltenburg Abbey (optional excursion)</name>
+      <description><![CDATA[
+        A Baroque monastery 25km upriver in a dramatic Danube gorge. Reachable by boat in season — check March availability closer to the date. A spectacular half-day if the boat is running; otherwise accessible by car or taxi.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#regensburg-weltenburg">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>11.8833,48.9000,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  MUNICH  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Munich Residenz</name>
+      <description><![CDATA[
+        The vast palace of the Wittelsbach rulers of Bavaria — one of the most significant royal residences in Europe. Munich was a major node in the cultural world Beethoven's music conquered. The Residenz's Cuvilliés Theatre, a jewel of Rococo design, hosted many premieres of the era and gives essential context for the aristocratic world that both supported and constrained Beethoven's revolutionary artistic ambitions.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#munich-residenz">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>11.5800,48.1411,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Munich Philharmonic / Gasteig — Concert</name>
+      <description><![CDATA[
+        <b>[TENTATIVE — no confirmed date yet]</b><br/><br/>
+        The Munich Philharmonic is one of Germany's great orchestras (Celibidache's ensemble; later Thielemann's). A full orchestral Beethoven programme in a great German hall — ideally the heroic style at full throttle: the 5th Symphony is the sound of Beethoven's defiance, fate knocking at the door and the human will refusing to yield. No confirmed 2027 date yet.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#munich-philharmonie">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <Point><coordinates>11.6006,48.1313,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  SALZBURG  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Mozart's Birthplace, Salzburg</name>
+      <description><![CDATA[
+        Getreidegasse 9 — where Wolfgang Amadeus Mozart was born in 1756. Beethoven and Mozart almost certainly met briefly in Vienna in 1787, on Beethoven's first visit to the capital. Mozart reportedly said of the young Beethoven: he would one day give the world something to talk about. The relationship between the two composers — reverence, rivalry, inheritance — runs through Beethoven's entire career.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#salzburg-mozart-birthplace">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>13.0432,47.8003,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Mozarteum, Salzburg — Concert</name>
+      <description><![CDATA[
+        <b>[TENTATIVE — no confirmed date yet]</b><br/><br/>
+        One of Europe's most distinguished concert venues, in the city that belongs to Mozart. A programme pairing the two composers makes audible the generational handoff — the Classical perfection of Mozart giving way to the stormy, striving, emotionally naked world of Beethoven. No confirmed 2027 date yet.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#salzburg-mozarteum">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <Point><coordinates>13.0438,47.8042,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  LINZ  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Hauptplatz, Linz</name>
+      <description><![CDATA[
+        One of the largest Baroque squares in Central Europe. The natural starting point for exploring Linz.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#linz-hauptplatz">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>14.2858,48.3069,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Alter Dom (Old Cathedral), Linz</name>
+      <description><![CDATA[
+        The cathedral where Anton Bruckner played organ for over a decade — a musical pilgrimage in its own right within the layered heritage of Linz.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#linz-alter-dom">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>14.2878,48.3053,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Lentos Art Museum, Linz</name>
+      <description><![CDATA[
+        A striking contemporary art museum on the Danube embankment, with an illuminated glass facade that reflects beautifully on the river at night.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#linz-lentos">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>14.2939,48.3040,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Brucknerhaus Linz — Beethoven Symphony Cycle</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] 2026/27 cycle continuing — exact March 2027 date not yet published</b><br/><br/>
+        One of Europe's leading concert halls, on the Danube. Markus Poschner and the Bruckner Orchester Linz are performing a <b>complete Beethoven symphony cycle across the 2025/26 and 2026/27 seasons</b> — Poschner's final season as chief conductor before Christoph Koncz takes over in 2027/28. <b>Worth knowing:</b> the Linz cycle is echoed the very next day at the Musikverein Golden Hall in Vienna, so a Linz concert may share a programme with something bookable a day later in the capital. <b>Beethoven link:</b> in 1812 Beethoven stayed in Linz with his brother Johann and sketched the 8th Symphony here during a period of family conflict — the jovial symphony born from strife.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#linz-brucknerhaus">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#anniversary-pin</styleUrl>
+      <Point><coordinates>14.2958,48.3031,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>St. Florian Abbey (optional excursion)</name>
+      <description><![CDATA[
+        18km south of Linz. One of the great Baroque monasteries of Austria. Anton Bruckner's primary connection — he played the organ here and is buried in the crypt beneath it. A magnificent half-day excursion, easy by car or local bus.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#linz-st-florian">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>14.3758,48.2058,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  THE WACHAU VALLEY  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Dürnstein, Wachau</name>
+      <description><![CDATA[
+        One of the most beautiful villages in the Wachau — where Richard the Lionheart was imprisoned in the 12th century. Castle ruins above the village give extraordinary Danube views (about an hour's hike up). Serves double duty: a midday transit stop en route to Vienna on the first pass through, and a base for the full extended Wachau stay later in the trip, when the apricot blossom should be in bloom.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-durnstein">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>15.5225,48.3939,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Krems an der Donau</name>
+      <description><![CDATA[
+        Train stop and gateway to the Wachau. The apricot blossom begins here in mid-to-late March before spreading up the valley. A reasonable lunch option if not detouring to Dürnstein.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-krems">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>15.6058,48.4097,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Weißenkirchen in der Wachau (recommended base)</name>
+      <description><![CDATA[
+        Recommended base for the full Wachau stay. A romantic medieval village with a red-steeple church, vineyard walks, and a sandy Danube beach — quieter than Dürnstein. Vineyard apartments above the rooftops have magnificent views to the river. Full apricot blossom is expected across the valley by early April — roughly 100,000 trees in pink and white.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-weissenkirchen">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>15.4667,48.4000,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Melk Abbey</name>
+      <description><![CDATA[
+        One of the great Baroque monasteries of Europe, perched dramatically above the Danube at the western end of the Wachau Valley, originally a fortified Benedictine abbey from the 11th century. Reachable by boat or bus. Allow a full morning.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-melk">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>15.3319,48.2283,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Apricot Trail (Marillenmeile), Rossatz-Arnsdorf</name>
+      <description><![CDATA[
+        The largest apricot-growing community in Austria. Marked walking paths through the orchards with views across the Danube to Dürnstein. In blossom, the trail is pink and white against the river and the castle ruins opposite.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-apricot-trail">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>15.5028,48.3819,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Spitz an der Donau</name>
+      <description><![CDATA[
+        A quiet riverside town in the heart of the Wachau. Good for a cycling stop between villages on the flat riverside path, with local Heuriger wine taverns.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#wachau-spitz">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>15.4167,48.3667,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  VIENNA  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Vienna Hauptbahnhof — Arrival</name>
+      <description><![CDATA[
+        Your ceremonial arrival in Vienna. Beethoven arrived here in November 1792, by horse-drawn coach — a journey of several days from Bonn — to study with Haydn, supported by the Elector with a stipend. He would never leave. Over 35 years in this city he wrote the 9 symphonies, 32 piano sonatas, 16 string quartets, and everything else that made him Beethoven.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-arrival">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3756,48.1851,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethovenplatz, Vienna</name>
+      <description><![CDATA[
+        A monumental statue of Beethoven near the Stadtpark, close to the Musikverein and Konzerthaus — the heart of Vienna's music quarter, and a natural orientation landmark.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-beethovenplatz">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3783,48.2008,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Pasqualati House / Pasqualatihaus (Beethoven-Haus Wien)</name>
+      <description><![CDATA[
+        Mölker Bastei 8, 1st district. Beethoven lived here intermittently from 1804–1815 — longer than anywhere else in Vienna. Baron Pasqualati kept the apartment reserved for him even when Beethoven moved out, knowing he would return. Here he composed the 4th, 5th, 6th, and 7th Symphonies, the Violin Concerto, and Fidelio's final revisions.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-pasqualati">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3600,48.2153,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Theater an der Wien — Concert</name>
+      <description><![CDATA[
+        <b>[TENTATIVE — no confirmed date yet]</b><br/><br/>
+        Where the 5th and 6th Symphonies premiered on the same concert in December 1808, and where Beethoven's only opera, Fidelio, premiered on November 20, 1805 — with Napoleonic troops occupying Vienna. Strong anniversary programming is expected but the 2026/27 season announcement hasn't surfaced full March 2027 detail yet.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-theater-an-der-wien">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <Point><coordinates>16.3581,48.2008,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Haus der Musik, Vienna</name>
+      <description><![CDATA[
+        Seilerstätte 30. The Beethoven room includes a door from his final residence, personal memorabilia, and a multimedia installation exploring his progressive hearing loss. A good unhurried afternoon.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-haus-der-musik">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3736,48.2039,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Kunsthistorisches Museum, Vienna</name>
+      <description><![CDATA[
+        The great imperial art museum on the Ringstrasse, housing one of the world's supreme collections — Velázquez, Titian, Vermeer, Bruegel. This is the visual culture of Beethoven's aristocratic patrons: Prince Lobkowitz, Archduke Rudolph, Prince Lichnowsky moved through rooms decorated in exactly this taste.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-kunsthistorisches">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3614,48.2035,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethoven Museum Heiligenstadt (Probusgasse 6)</name>
+      <description><![CDATA[
+        Probusgasse 6, Vienna's 19th district (Döbling). 265m² across 14 rooms — the house where Beethoven wrote the Heiligenstadt Testament in 1802, confronting his progressive deafness. Ear trumpets, personal objects, and a hearing laboratory. Allow 2–3 hours.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-heiligenstadt-museum">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3511,48.2569,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethovengang (Beethoven's Walk), Heiligenstadt</name>
+      <description><![CDATA[
+        The path along the Schreiberbach creek in Heiligenstadt where Beethoven walked daily during his 1802 retreat — composing in his head, processing his deafness, writing the Testament. The path still exists, shaded and quiet. Walking it in the knowledge of what he was carrying here — and what he would go on to create despite it — is one of the most quietly devastating experiences on the entire trip.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-beethovengang">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3444,48.2617,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Heuriger Mayer am Pfarrplatz, Heiligenstadt</name>
+      <description><![CDATA[
+        A wine tavern in Heiligenstadt in a house where Beethoven himself lived briefly in 1817. Excellent Viennese wines with traditional cold platters — good for lunch or an afternoon glass after the Beethovengang walk.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-heuriger-mayer">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3519,48.2578,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Eroica House, Döbling</name>
+      <description><![CDATA[
+        Döblinger Hauptstraße 92. Where Beethoven wrote the Third Symphony ("Eroica") in 1803. A quieter, less-visited site with documents on the first performance and images of Döbling as it was in Beethoven's time.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-eroica-house">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3494,48.2494,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Schwarzspanierstraße — Beethoven's Final Residence</name>
+      <description><![CDATA[
+        The site where Beethoven died on March 26, 1827. The original building is gone but the replacement carries reliefs and plaques marking its historical significance. A quiet, important visit.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-schwarzspanierstrasse">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3581,48.2194,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Alserkirche, Vienna</name>
+      <description><![CDATA[
+        The church where Beethoven's funeral was held on March 29, 1827, attended by thousands. A short walk from Schwarzspanierstraße; a plaque outside commemorates the occasion. Also has a Schubert connection.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-alserkirche">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3553,48.2225,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Musikverein Vienna — Golden Hall</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Mar 20 (15:30 mat.), Mar 21 (11:00 mat.), Mar 26 (19:30) — Missa Solemnis</b><br/><br/>
+        The Gesellschaft der Musikfreunde — home of the Vienna Philharmonic and arguably the greatest concert hall in the world. The Goldener Saal, completed in 1870, is a shoebox-design hall of near-perfect acoustics. <b>Confirmed as a three-concert run:</b> Sat Mar 20 (matinee, 15:30), Sun Mar 21 (matinee, 11:00), and <b>Fri Mar 26 (19:30)</b> — the 200th anniversary of Beethoven's death, to the day. All three: Franz Welser-Möst conducting the VPO and the Singverein der Gesellschaft der Musikfreunde in the <b>Missa Solemnis</b>, with soloists Golda Schultz (soprano), Deniz Uzun (mezzo), Daniel Behle (tenor), and Martin Summer (bass). March 26 is the single most important ticket of the entire trip.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-musikverein">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#anniversary-pin</styleUrl>
+      <TimeSpan><begin>2027-03-20</begin><end>2027-03-26</end></TimeSpan>
+      <Point><coordinates>16.3722,48.2006,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Konzerthaus Vienna</name>
+      <description><![CDATA[
+        <b>[TENTATIVE — no confirmed date yet]</b><br/><br/>
+        Vienna's other great concert hall, home to the Wiener Symphoniker. Likely to carry major anniversary programming throughout the week of March 20–26 — potentially including the late string quartets (Op. 131 or Op. 132), the most private works Beethoven ever wrote, composed in total deafness. No confirmed March 2027 date yet.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-konzerthaus">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <Point><coordinates>16.3808,48.2003,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Wiener Staatsoper — Fidelio</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Jan 9, 12, 15, 18, 2027</b><br/><br/>
+        Beethoven's only opera, in a new production directed by Nikolaus Habjan that premiered December 16, 2025, conducted by Franz Welser-Möst with the VPO in the pit. <b>Confirmed 2027 repertory performances: January 9, 12, 15, and 18.</b> This falls before your current arrival date (March 10) — outside the window as currently planned, but flagged since it's the single Beethoven opera performance confirmed in Vienna this anniversary season, and worth knowing about even if you don't shift the trip to catch it.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-staatsoper-fidelio">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#anniversary-pin</styleUrl>
+      <TimeSpan><begin>2027-01-09</begin><end>2027-01-18</end></TimeSpan>
+      <Point><coordinates>16.3688,48.2035,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>★ Zentralfriedhof — Beethoven's Grave</name>
+      <description><![CDATA[
+        Vienna's great central cemetery, and the most moving place in European musical culture. Beethoven was originally buried at Währing cemetery in 1827; in 1888 his remains were reinterred here in the Ehrengräber (Honorary Graves) section, alongside Franz Schubert — who was buried at his own request near Beethoven and died just 18 months after him. Brahms, Hugo Wolf, and the Strauss family are nearby. On the morning of the 200th anniversary of his death, this will be one of the most moving places on earth.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-zentralfriedhof">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#anniversary-pin</styleUrl>
+      <Point><coordinates>16.4392,48.1472,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  BADEN BEI WIEN  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Beethoven-Haus Baden (Haus der Neunten)</name>
+      <description><![CDATA[
+        Rathausgasse 10, Baden bei Wien — 40 minutes south of Vienna by train. Known as the "House of the Ninth" — Beethoven stayed here in 1821, 1822, and 1823 and composed significant portions of the Ninth Symphony during his Baden summers. A modern museum with an interactive hearing laboratory, original piano, and personal belongings. A profound visit given you'll have just heard the Ninth performed in Vienna.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#baden-beethovenhaus">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.2328,47.9964,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Kurpark Baden bei Wien</name>
+      <description><![CDATA[
+        The elegant spa park at the heart of Baden bei Wien, where Beethoven walked daily during his 15 summer retreats. He was a notorious walker — friends reported he walked for hours, humming, beating time, ignoring passers-by. A beautiful green space, largely unchanged in character.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#baden-kurpark">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.2347,47.9978,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Römertherme Baden (Roman Thermal Baths)</name>
+      <description><![CDATA[
+        Thermal baths with Roman origins, still functioning. Baden has been a thermal spa town since antiquity — Beethoven himself came here for the healing waters. A genuine spa day fits naturally at this point in the journey.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#baden-roemertherme">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.2319,48.0008,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  MÖDLING  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Mödling (Beethoven Retreat Village)</name>
+      <description><![CDATA[
+        A small town 16km south of Vienna, where Beethoven spent summers in 1818–20. He worked on the Missa Solemnis and the Hammerklavier Sonata (Op. 106) here. The Hafnerhaus, where he stayed, is preserved. A gentle, beautiful stop — quieter than Baden, less visited, and full of unhurried provincial atmosphere.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#moedling-village">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#extended-pin</styleUrl>
+      <Point><coordinates>16.2833,48.0833,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  VIENNA — FAREWELL WEEKS  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Naschmarkt, Vienna</name>
+      <description><![CDATA[
+        Vienna's great open-air market. Sunday morning is the best time — a long, leisurely browse through food stalls, coffee, and the city at its most local.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-naschmarkt">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3636,48.1992,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Belvedere Palace &amp; Gardens, Vienna</name>
+      <description><![CDATA[
+        The Upper and Lower Belvedere palaces with formal Baroque gardens. Home to Klimt's The Kiss. A grand afternoon that needs no Beethoven agenda — just Vienna at its most magnificent.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-belvedere">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3797,48.1914,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Schönbrunn Palace &amp; Gardens, Vienna</name>
+      <description><![CDATA[
+        The Habsburg imperial palace with vast formal gardens. A proper visit with time for the gardens and the Gloriette viewpoint. Beethoven performed here as a young man for Emperor Joseph II.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-schoenbrunn">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3122,48.1850,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Café Sacher, Vienna</name>
+      <description><![CDATA[
+        The home of the original Sachertorte, behind the Vienna State Opera. A quintessential Vienna afternoon — coffee, cake, and the city's elegant pace.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#vienna-cafe-sacher">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#core-pin</styleUrl>
+      <Point><coordinates>16.3694,48.2031,0</coordinates></Point>
+    </Placemark>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  THE WIDER ANNIVERSARY LANDSCAPE  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Beethoven27 — EU Anniversary Project</name>
+      <description><![CDATA[
+        A network of 27 EU cities coordinating anniversary events across 2027. The single best overview of the full landscape — track events across Bonn, Cologne, Vienna, and beyond from one place rather than monitoring each venue individually.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-beethoven27">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <Point><coordinates>16.3725,48.2005,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Igor Levit — Complete Beethoven Piano Sonatas</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Eight-recital cycle, October 2026 – June 2028, Vienna among the venues — exact Vienna dates not yet published</b><br/><br/>
+        Levit is performing his complete cycle of all 32 Beethoven sonatas as eight-recital series across New York, London, Vienna, Berlin, Munich, Hamburg, and North Rhine-Westphalia, running October 2026 through June 2028. Vienna is confirmed as a venue (almost certainly Musikverein, given his history there) but the specific 2027 recital dates for the Vienna leg haven't surfaced yet — worth checking closer to autumn 2026.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-levit-sonatas">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <Point><coordinates>16.3722,48.2006,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Wiener Concert-Verein — Beethoven/Mahler, May 19, 2027</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Wednesday, May 19, 2027, 19:30, Musikverein Brahms Saal</b><br/><br/>
+        A subscription concert (ABO IV) pairing Bruckner, Kralik von Meyerswalden, and Bodorova with Beethoven's String Quartet in F minor, Op. 95 — arranged for string orchestra by Gustav Mahler. A genuinely rare pairing: Beethoven filtered through Mahler's ears, in the Brahms Saal. Falls after your currently-planned departure (April 9) but squarely within the anniversary year, and within the newly expanded through-June window.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-wiener-concertverein">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <TimeStamp><when>2027-05-19</when></TimeStamp>
+      <Point><coordinates>16.3722,48.2006,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Vienna Philharmonic — Musikverein, June 19, 2027</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Saturday, June 19, 2027, 19:30, Musikverein Brahmssaal</b><br/><br/>
+        A VPO programme pairing Fanny Cäcilie Mendelssohn Bartholdy, Beethoven, and Tchaikovsky. Falls well after the current departure date but is confirmed on the VPO's own calendar and sits within the expanded through-June tracking window.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-vpo-june">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#concert-pin</styleUrl>
+      <TimeStamp><when>2027-06-19</when></TimeStamp>
+      <Point><coordinates>16.3722,48.2006,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Gewandhaus Leipzig — Beethoven Festival</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] May 11–23, 2027</b><br/><br/>
+        Off your current route entirely, but a major piece of the anniversary landscape: the Gewandhaus zu Leipzig is running its own dedicated Beethoven festival from May 11 to 23, 2027, with symphony concerts, chamber music, choral concerts and recitals featuring Gautier Capuçon, Lang Lang, and Augustin Hadelich among others.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-gewandhaus-leipzig">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <Point><coordinates>12.3773,51.3397,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Elbphilharmonie Hamburg — Complete Symphony Cycle</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Four-concert cycle; one confirmed date so far — Sunday, June 20, 2027</b><br/><br/>
+        Also off-route: the Orchestra Wiener Akademie is performing all nine Beethoven symphonies across four anniversary concerts at the Elbphilharmonie's Grand Hall in 2027, marking the 200th anniversary. Only one specific date has surfaced so far — Sunday, June 20, 2027, pairing the 8th and 9th Symphonies — with the other three dates in the cycle not yet published.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-elbphilharmonie-hamburg">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <TimeStamp><when>2027-06-20</when></TimeStamp>
+      <Point><coordinates>9.9847,53.5412,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Beethoven-Haus Bonn — Anniversary Discussion Concert</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] March 26, 2027 (Beethoven-Haus Bonn)</b><br/><br/>
+        On the anniversary of Beethoven's death itself, the Beethoven-Haus Bonn hosts a traditional discussion concert: pianist/conductor/composer Fabian Müller performs his own bagatelles alongside the opening movements of several Beethoven piano sonatas, part of the "32 Bagatelles for Beethoven" project. A lovely idea in principle — but by March 26 the current itinerary has the group in Vienna for the flagship concert, so this one is a scheduling conflict, not an addition, unless the whole route gets rethought.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-bonn-discussion">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <TimeStamp><when>2027-03-26</when></TimeStamp>
+      <Point><coordinates>7.0977,50.7333,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Cleveland Orchestra — Missa Solemnis (Cleveland &amp; Carnegie Hall)</name>
+      <description><![CDATA[
+        <b>[CONFIRMED] Jan 14 & 16 (Severance, Cleveland), Jan 19 (Carnegie Hall, NYC)</b><br/><br/>
+        Well outside Europe entirely, but notable: Franz Welser-Möst's farewell season with the Cleveland Orchestra includes Beethoven's Missa Solemnis at Severance Music Center (Jan 14 & 16, 2027) and at Carnegie Hall (Jan 19, 2027), with soprano Golda Schultz — the same soloist confirmed for the Musikverein's own Missa Solemnis in March. Included here purely for completeness.<br/><br/>
+        <a href="https://tripperist.github.io/beethoven/catalog.html#network-cleveland-carnegie">Full entry in the Beethoven Catalog →</a>
+      ]]></description>
+      <styleUrl>#network-pin</styleUrl>
+      <TimeSpan><begin>2027-01-14</begin><end>2027-01-19</end></TimeSpan>
+      <Point><coordinates>-81.6216,41.4993,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--  ROUTE LINE                                              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <Placemark>
+      <name>Pilgrimage Route — Bonn to Vienna</name>
+      <description><![CDATA[Indicative core route line. See the Beethoven Catalog (tripperist.github.io/beethoven/catalog.html) for the full, place-by-place breakdown of every stop, sight, and confirmed event.]]></description>
+      <styleUrl>#route</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          7.0982,50.7374,0
+          6.9603,50.9413,0
+          7.1908,50.6598,0
+          7.6087,50.3641,0
+          7.7233,50.1339,0
+          8.7153,49.4102,0
+          11.5800,48.1411,0
+          13.0432,47.8003,0
+          16.3725,48.2005,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+  </Document>
+</kml>

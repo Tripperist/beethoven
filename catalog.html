@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beethoven Pilgrimage 2027 — The Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1410; --ink-mid: #3d3028; --ink-muted: #7a6b5e; --ink-faint: #b8a898;
+    --paper: #f7f3ed; --paper-warm: #f0ebe2; --paper-deep: #e8e0d4;
+    --rule: #c8b8a8; --rule-light: #ddd4c8;
+    --gold: #9a7c3a; --gold-light: #c4a55a;
+    --urgent: #7a2020; --urgent-bg: #fdf0f0;
+    --high: #6b4a10; --high-bg: #fdf6e8;
+    --medium: #1a4a6b; --medium-bg: #eef4fb;
+    --watch: #3a5a2a; --watch-bg: #f0f7ec;
+    --purple: #4a3a6b; --purple-bg: #f2f0f8;
+    --teal: #1a6b5e; --teal-bg: #eaf6f3;
+  }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  .header { background: var(--ink); color: var(--paper); text-align: center; padding: 4rem 2rem 3rem; }
+  .header-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.4rem; }
+  .header h1 { font-family: 'IM Fell English', serif; font-weight: 400; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.15; margin-bottom: 0.5rem; }
+  .header h1 em { font-style: italic; color: var(--gold-light); }
+  .header-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 1.1rem; color: var(--ink-faint); margin-bottom: 2rem; }
+  .header-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 1.5rem; }
+  .header-meta { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+
+  .intro-band { background: var(--ink-mid); color: var(--paper-warm); padding: 1.6rem 2rem; text-align: center; }
+  .intro-band p { font-family: 'IM Fell English', serif; font-style: italic; font-size: 1.05rem; max-width: 760px; margin: 0 auto; line-height: 1.7; }
+  .intro-band strong { color: var(--gold-light); font-style: normal; font-weight: 400; }
+
+  .legend-band { background: var(--paper-deep); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1.25rem 2rem; }
+  .legend-inner { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; justify-content: center; }
+  .legend-note { font-size: 0.82rem; color: var(--ink-muted); width: 100%; text-align: center; margin-bottom: 0.4rem; }
+
+  .toc-band { background: var(--paper); border-bottom: 1px solid var(--rule-light); padding: 1.25rem 2rem; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(6px); background: rgba(247,243,237,0.94); }
+  .toc-inner { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; justify-content: center; }
+  .toc-inner a { font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; }
+  .toc-inner a:hover { color: var(--gold); border-bottom-color: var(--gold-light); }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  .city-section { margin-bottom: 3.5rem; scroll-margin-top: 4.5rem; }
+  .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--gold); padding-bottom: 0.6rem; flex-wrap: wrap; }
+  .section-head h2 { font-family: 'IM Fell English', serif; font-weight: 400; font-size: 1.7rem; color: var(--ink); }
+  .section-sub { font-size: 0.82rem; color: var(--ink-muted); font-style: italic; }
+
+  .entry { background: white; border: 1px solid var(--rule-light); border-radius: 2px; padding: 1.4rem 1.6rem; margin-bottom: 1rem; scroll-margin-top: 4.5rem; }
+  .entry-head { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; align-items: center; }
+  .tag { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; white-space: nowrap; }
+  .tag-sight { background: var(--medium-bg); color: var(--medium); border: 1px solid #b8d0e8; }
+  .tag-museum { background: var(--purple-bg); color: var(--purple); border: 1px solid #c8c0e0; }
+  .tag-tavern { background: var(--high-bg); color: var(--high); border: 1px solid #e8d4a0; }
+  .tag-extended { background: var(--watch-bg); color: var(--watch); border: 1px solid #c0d8b8; }
+  .tag-concert { background: var(--teal-bg); color: var(--teal); border: 1px solid #b8ddd2; }
+  .tag-flagship { background: var(--urgent-bg); color: var(--urgent); border: 1px solid #e8c0c0; }
+  .tag-network { background: var(--paper-deep); color: var(--ink-muted); border: 1px solid var(--rule-light); }
+  .route-tag { background: none; color: var(--ink-faint); border: 1px dashed var(--rule); }
+  .status-chip { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+  .status-confirmed { background: var(--watch-bg); color: var(--watch); border: 1px solid #c8dfc0; }
+  .status-tentative { background: var(--paper-deep); color: var(--ink-muted); border: 1px solid var(--rule-light); }
+
+  .entry-name { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .entry-event { font-size: 0.82rem; color: var(--urgent); font-weight: 600; margin-bottom: 0.5rem; }
+  .entry-body { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.65; margin-bottom: 0.6rem; }
+  .entry-body b { font-weight: 600; color: var(--ink); }
+  .entry-link { font-size: 0.78rem; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border-bottom: 1px solid transparent; }
+  .entry-link:hover { border-bottom-color: var(--gold-light); }
+
+  footer { background: var(--ink-mid); color: var(--ink-faint); text-align: center; padding: 2rem; font-size: 0.78rem; letter-spacing: 0.05em; line-height: 1.8; }
+  footer em { font-family: 'IM Fell English', serif; font-style: italic; color: var(--gold-light); font-size: 0.92rem; display: block; margin-bottom: 0.5rem; }
+
+  @media (max-width: 600px) {
+    .header { padding: 3rem 1.5rem 2.5rem; }
+    .main { padding: 2rem 1.25rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <p class="header-eyebrow">The Catalog · Bonn to Vienna and beyond</p>
+  <h1>Beethoven <em>Pilgrimage</em> 2027</h1>
+  <p class="header-subtitle">Every sight, museum, tavern, and confirmed performance — organized by place, not by date</p>
+  <div class="header-rule"></div>
+  <p class="header-meta">Companion to the Concert Monitor · tripperist.github.io/beethoven</p>
+</header>
+
+<div class="intro-band">
+  <p>This is the full catalog behind the pilgrimage — every Beethoven site, museum, and performance we've found worth knowing about, whether or not it's on the current itinerary. <strong>All dates are subject to change.</strong> Where a concert or performance has a real, confirmed date we say so plainly; where it's still a placeholder, we say that too. The companion KML map links directly into this page — click through from any pin to read the full entry here.</p>
+</div>
+
+<div class="legend-band">
+  <div class="legend-inner">
+    <span class="legend-note">Entry types, at a glance:</span>
+    <span class="tag tag-sight">Sight</span>
+    <span class="tag tag-museum">Museum</span>
+    <span class="tag tag-tavern">Tavern &amp; Rest</span>
+    <span class="tag tag-extended">Wachau / Extended</span>
+    <span class="tag tag-concert">Concert</span>
+    <span class="tag tag-flagship">★ Confirmed Event</span>
+    <span class="tag tag-network">Beyond the Route</span>
+  </div>
+</div>
+
+<div class="toc-band">
+  <div class="toc-inner">
+      <a href="#bonn">Bonn</a>
+      <a href="#cologne">Cologne</a>
+      <a href="#koblenz">Koblenz & the Rhine Gorge</a>
+      <a href="#heidelberg">Heidelberg</a>
+      <a href="#regensburg">Regensburg</a>
+      <a href="#munich">Munich</a>
+      <a href="#salzburg">Salzburg</a>
+      <a href="#linz">Linz</a>
+      <a href="#wachau">The Wachau Valley</a>
+      <a href="#vienna">Vienna</a>
+      <a href="#baden">Baden bei Wien</a>
+      <a href="#moedling">Mödling</a>
+      <a href="#vienna-farewell">Vienna — Farewell Weeks</a>
+      <a href="#network">The Wider Anniversary Landscape</a>
+  </div>
+</div>
+
+<main class="main">
+
+  <section class="city-section" id="bonn">
+    <div class="section-head">
+      <h2>Bonn</h2>
+      <span class="section-sub">Birthplace · Days 1–3 (dates flexible)</span>
+    </div>
+    
+  <div class="entry" id="bonn-arrival">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Bonn City Centre — Arrival</p>
+    
+    <p class="entry-body">Your starting point. Bonn is a gentle, walkable city on the west bank of the Rhine — the birthplace of Beethoven and, for centuries, seat of the Archbishop-Electors of Cologne. Settle in with an evening walk along the Rhine promenade and a Rhenish dinner. The journey begins quietly here.</p>
+    
+  </div>
+
+  <div class="entry" id="bonn-beethovenhaus">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethoven-Haus Bonn (Birthplace)</p>
+    
+    <p class="entry-body">Bonngasse 20 — the house where Ludwig van Beethoven was born on or around December 16, 1770. Now one of the world's great composer museums, it holds original manuscripts in his own hand, his remarkable collection of ear trumpets (made as his deafness progressed), the Broadwood grand piano gifted to him by the London makers, and a lock of his hair. Expect a major 200th-anniversary exhibition running through 2027 — allow a full morning. This is the heart of the pilgrimage's first act.</p>
+    <a class="entry-link" href="https://www.beethoven.de" target="_blank" rel="noopener">www.beethoven.de
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="bonn-minster">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Bonn Minster / St. Remigius Church (Baptism)</p>
+    
+    <p class="entry-body">Two significant Beethoven sacred sites in close proximity. <b>Bonn Minster (Bonner Münster)</b> — the great Gothic-Romanesque minster where the teenage Beethoven served as court organist; playing here was one of his first professional musical roles, and the baptismal register entry still exists. <b>St. Remigius Church</b> — the parish church where Ludwig van Beethoven was baptized on December 17, 1770, the day after his presumed birth date. A humble but profoundly significant stop: the earliest documented moment of his existence.</p>
+    
+  </div>
+
+  <div class="entry" id="bonn-monument">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethoven Monument, Münsterplatz</p>
+    
+    <p class="entry-body">The first quiet encounter with Beethoven's city. An evening walk to this monumental statue in the heart of Bonn's old town sets the tone for the entire journey.</p>
+    
+  </div>
+
+  <div class="entry" id="bonn-electoral-palace">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Kurfürstliches Schloss (Electoral Palace), Bonn</p>
+    
+    <p class="entry-body">Now the main building of the University of Bonn, this was the seat of the Archbishop-Elector of Cologne — the court where the young Beethoven served as a musician from age 12. His father Johann also worked here as a court tenor. Walking these grounds, you walk the world of Beethoven's adolescence, the political and cultural environment that shaped his earliest ambitions.</p>
+    
+  </div>
+
+  <div class="entry" id="bonn-drachenfels">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      <span class="tag route-tag">Version B route</span>
+      
+    </div>
+    <p class="entry-name">Drachenfels</p>
+    
+    <p class="entry-body">The ruined castle atop the Drachenfels hill above the Rhine, just south of Bonn. Beethoven climbed here in the autumn of 1792, just weeks before his departure for Vienna — a farewell gesture to the landscape of his youth. The view over the Rhine from the ruins is extraordinary: the same view Beethoven saw as a young man about to leave home forever.</p>
+    
+  </div>
+
+  <div class="entry" id="bonn-beethovenhalle">
+    <div class="entry-head">
+      <span class="tag tag-flagship">★ Confirmed Event</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Beethovenhalle Bonn — Beethoven Orchester Bonn</p>
+    <p class="entry-event">Friday, March 25, 2027, 19:30 — Missa Solemnis</p>
+    <p class="entry-body">Bonn's own concert hall and orchestra, home turf of the Freitagskonzert series. <b>Confirmed:</b> Friday, March 25, 2027, 19:30 — the Beethoven Orchester Bonn performs the <b>Missa Solemnis</b> with soprano Chen Reiss, the season's liturgical centrepiece for the 200th anniversary of Beethoven's death — performed, fittingly, in his hometown. General public booking opened June 26, 2026 and is live now. Falls just outside the current Day 1–3 Bonn window — worth weighing whether the itinerary should stretch to catch it.</p>
+    <a class="entry-link" href="https://www.beethoven-orchester.de" target="_blank" rel="noopener">www.beethoven-orchester.de
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+  </section>
+
+  <section class="city-section" id="cologne">
+    <div class="section-head">
+      <h2>Cologne</h2>
+      <span class="section-sub">Day 3 evening (dates flexible)</span>
+    </div>
+    
+  <div class="entry" id="cologne-philharmonie">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-tentative">Tentative / not yet announced</span>
+    </div>
+    <p class="entry-name">Kölner Philharmonie — Concert</p>
+    
+    <p class="entry-body">One of Germany's premier concert halls, 25–30 minutes by train from Bonn, home to the WDR Sinfonieorchester and the Gürzenich-Orchester. Anniversary programming is expected — a concert here would ideally sit early in the biographical arc: Beethoven in his first voice, before deafness, before the heroic style, full of promise and searching energy — Op. 1 Piano Trios, early piano sonatas, or chamber music from the Bonn and early Vienna years. Exact 2027 programme not yet published; check from autumn 2026.</p>
+    <a class="entry-link" href="https://www.koelner-philharmonie.de" target="_blank" rel="noopener">www.koelner-philharmonie.de
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="cologne-cathedral">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      <span class="tag route-tag">Version B route</span>
+      
+    </div>
+    <p class="entry-name">Cologne Cathedral (Kölner Dom)</p>
+    
+    <p class="entry-body">One of the supreme achievements of Gothic architecture — begun in 1248, completed in 1880. Beethoven knew this city well; Cologne was the seat of the Elector he served. Standing before the Dom, you understand the scale of the world Beethoven inhabited: the Catholic Rhine, ancient and grand, the backdrop against which his secular, revolutionary music took shape.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="koblenz">
+    <div class="section-head">
+      <h2>Koblenz & the Rhine Gorge</h2>
+      <span class="section-sub">Days 4–5 (dates flexible)</span>
+    </div>
+    
+  <div class="entry" id="koblenz-eck">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Deutsches Eck (German Corner), Koblenz</p>
+    
+    <p class="entry-body">The dramatic promontory where the Mosel meets the Rhine — one of the great geographical moments of the German Rhineland. Koblenz was a significant city in the Electoral world Beethoven inhabited. The confluence of the two rivers, with the fortress of Ehrenbreitstein rising across the water, is best seen at dusk.</p>
+    
+  </div>
+
+  <div class="entry" id="koblenz-fortress">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Ehrenbreitstein Fortress, Koblenz</p>
+    
+    <p class="entry-body">One of the largest preserved fortresses in Europe, overlooking the confluence of the Rhine and Moselle. Take the cable car across the river for panoramic views. It was occupied by French troops in Beethoven's era — the same revolutionary France whose ideals initially inspired him to dedicate his Third Symphony to Napoleon, before angrily retracting the dedication.</p>
+    
+  </div>
+
+  <div class="entry" id="rhine-loreley">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Rhine Gorge — Loreley Rock</p>
+    
+    <p class="entry-body">The stretch of the Rhine between Koblenz and Rüdesheim — a UNESCO World Heritage landscape of castle-crowned crags, vineyard terraces, and the legendary Loreley rock at its narrowest and most treacherous point. This is the Romantic landscape that the poets, painters, and composers of Beethoven's era mythologised. Best seen slowly, from a boat, with no other agenda.</p>
+    
+  </div>
+
+  <div class="entry" id="rhine-bacharach">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Bacharach (Rhine Gorge stop — recommended)</p>
+    
+    <p class="entry-body">A genuinely medieval wine village mid-gorge, less touristy than Rüdesheim. Burg Stahleck castle sits above the town. Good for a lunch stop and a 1–2 hour wander before continuing south by train. The more characterful of the two disembarkation options.</p>
+    
+  </div>
+
+  <div class="entry" id="rhine-ruedesheim">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Rüdesheim am Rhein (Rhine Gorge stop — alternative)</p>
+    
+    <p class="entry-body">Southern end of the Rhine Gorge. A well-known, somewhat busier wine town. A reasonable lunch stop before the train south toward Regensburg or Heidelberg if Bacharach doesn't fit the schedule.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="heidelberg">
+    <div class="section-head">
+      <h2>Heidelberg</h2>
+      <span class="section-sub">Alternate-route option — not on the current core itinerary</span>
+    </div>
+    
+  <div class="entry" id="heidelberg-castle">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Heidelberg Castle</p>
+    
+    <p class="entry-body">The great ruined castle above Heidelberg — one of the defining images of German Romanticism, built around exactly the aesthetic the movement prized: the glorious fragment, nature reclaiming human ambition. The poets and philosophers who studied at Heidelberg University — Hegel, Brentano, von Arnim — were Beethoven's direct intellectual contemporaries.</p>
+    
+  </div>
+
+  <div class="entry" id="heidelberg-philosophenweg">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Philosophenweg (Philosophers' Walk), Heidelberg</p>
+    
+    <p class="entry-body">The famous hillside path above Heidelberg, with views across the Neckar valley to the castle ruins, named for the university philosophers who walked here in contemplation. Walking it is to inhabit the mental world of Beethoven's era — the Romantic generation processing Kant, Schiller, and Goethe.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="regensburg">
+    <div class="section-head">
+      <h2>Regensburg</h2>
+      <span class="section-sub">Days 6–7 (dates flexible)</span>
+    </div>
+    
+  <div class="entry" id="regensburg-dom">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Dom St. Peter, Regensburg</p>
+    
+    <p class="entry-body">One of the finest Gothic cathedrals in Germany. Allow 1–2 hours on arrival.</p>
+    
+  </div>
+
+  <div class="entry" id="regensburg-bridge">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Steinerne Brücke (Stone Bridge), Regensburg</p>
+    
+    <p class="entry-body">A 12th-century bridge still in use today — one of the oldest surviving bridges in Germany. A natural evening walk along the Danube.</p>
+    
+  </div>
+
+  <div class="entry" id="regensburg-wurstkuchl">
+    <div class="entry-head">
+      <span class="tag tag-tavern">Tavern &amp; Rest</span>
+      
+      
+    </div>
+    <p class="entry-name">Wurstkuchl, Regensburg</p>
+    
+    <p class="entry-body">One of the oldest sausage kitchens in the world, sitting beside the Stone Bridge on the Danube. A late breakfast here is the defining Regensburg experience.</p>
+    
+  </div>
+
+  <div class="entry" id="regensburg-weltenburg">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Weltenburg Abbey (optional excursion)</p>
+    
+    <p class="entry-body">A Baroque monastery 25km upriver in a dramatic Danube gorge. Reachable by boat in season — check March availability closer to the date. A spectacular half-day if the boat is running; otherwise accessible by car or taxi.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="munich">
+    <div class="section-head">
+      <h2>Munich</h2>
+      <span class="section-sub">Alternate-route option — not on the current core itinerary</span>
+    </div>
+    
+  <div class="entry" id="munich-residenz">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Munich Residenz</p>
+    
+    <p class="entry-body">The vast palace of the Wittelsbach rulers of Bavaria — one of the most significant royal residences in Europe. Munich was a major node in the cultural world Beethoven's music conquered. The Residenz's Cuvilliés Theatre, a jewel of Rococo design, hosted many premieres of the era and gives essential context for the aristocratic world that both supported and constrained Beethoven's revolutionary artistic ambitions.</p>
+    
+  </div>
+
+  <div class="entry" id="munich-philharmonie">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-tentative">Tentative / not yet announced</span>
+    </div>
+    <p class="entry-name">Munich Philharmonic / Gasteig — Concert</p>
+    
+    <p class="entry-body">The Munich Philharmonic is one of Germany's great orchestras (Celibidache's ensemble; later Thielemann's). A full orchestral Beethoven programme in a great German hall — ideally the heroic style at full throttle: the 5th Symphony is the sound of Beethoven's defiance, fate knocking at the door and the human will refusing to yield. No confirmed 2027 date yet.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="salzburg">
+    <div class="section-head">
+      <h2>Salzburg</h2>
+      <span class="section-sub">Alternate-route option — not on the current core itinerary</span>
+    </div>
+    
+  <div class="entry" id="salzburg-mozart-birthplace">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Mozart's Birthplace, Salzburg</p>
+    
+    <p class="entry-body">Getreidegasse 9 — where Wolfgang Amadeus Mozart was born in 1756. Beethoven and Mozart almost certainly met briefly in Vienna in 1787, on Beethoven's first visit to the capital. Mozart reportedly said of the young Beethoven: he would one day give the world something to talk about. The relationship between the two composers — reverence, rivalry, inheritance — runs through Beethoven's entire career.</p>
+    
+  </div>
+
+  <div class="entry" id="salzburg-mozarteum">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-tentative">Tentative / not yet announced</span>
+    </div>
+    <p class="entry-name">Mozarteum, Salzburg — Concert</p>
+    
+    <p class="entry-body">One of Europe's most distinguished concert venues, in the city that belongs to Mozart. A programme pairing the two composers makes audible the generational handoff — the Classical perfection of Mozart giving way to the stormy, striving, emotionally naked world of Beethoven. No confirmed 2027 date yet.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="linz">
+    <div class="section-head">
+      <h2>Linz</h2>
+      <span class="section-sub">Days 8–9 (dates flexible)</span>
+    </div>
+    
+  <div class="entry" id="linz-hauptplatz">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Hauptplatz, Linz</p>
+    
+    <p class="entry-body">One of the largest Baroque squares in Central Europe. The natural starting point for exploring Linz.</p>
+    
+  </div>
+
+  <div class="entry" id="linz-alter-dom">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Alter Dom (Old Cathedral), Linz</p>
+    
+    <p class="entry-body">The cathedral where Anton Bruckner played organ for over a decade — a musical pilgrimage in its own right within the layered heritage of Linz.</p>
+    
+  </div>
+
+  <div class="entry" id="linz-lentos">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Lentos Art Museum, Linz</p>
+    
+    <p class="entry-body">A striking contemporary art museum on the Danube embankment, with an illuminated glass facade that reflects beautifully on the river at night.</p>
+    
+  </div>
+
+  <div class="entry" id="linz-brucknerhaus">
+    <div class="entry-head">
+      <span class="tag tag-flagship">★ Confirmed Event</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Brucknerhaus Linz — Beethoven Symphony Cycle</p>
+    <p class="entry-event">2026/27 cycle continuing — exact March 2027 date not yet published</p>
+    <p class="entry-body">One of Europe's leading concert halls, on the Danube. Markus Poschner and the Bruckner Orchester Linz are performing a <b>complete Beethoven symphony cycle across the 2025/26 and 2026/27 seasons</b> — Poschner's final season as chief conductor before Christoph Koncz takes over in 2027/28. <b>Worth knowing:</b> the Linz cycle is echoed the very next day at the Musikverein Golden Hall in Vienna, so a Linz concert may share a programme with something bookable a day later in the capital. <b>Beethoven link:</b> in 1812 Beethoven stayed in Linz with his brother Johann and sketched the 8th Symphony here during a period of family conflict — the jovial symphony born from strife.</p>
+    <a class="entry-link" href="https://www.brucknerhaus.at" target="_blank" rel="noopener">www.brucknerhaus.at
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="linz-st-florian">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">St. Florian Abbey (optional excursion)</p>
+    
+    <p class="entry-body">18km south of Linz. One of the great Baroque monasteries of Austria. Anton Bruckner's primary connection — he played the organ here and is buried in the crypt beneath it. A magnificent half-day excursion, easy by car or local bus.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="wachau">
+    <div class="section-head">
+      <h2>The Wachau Valley</h2>
+      <span class="section-sub">Transit preview (Day 10) and full extended stay (Days 21–26) — dates flexible</span>
+    </div>
+    
+  <div class="entry" id="wachau-durnstein">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Dürnstein, Wachau</p>
+    
+    <p class="entry-body">One of the most beautiful villages in the Wachau — where Richard the Lionheart was imprisoned in the 12th century. Castle ruins above the village give extraordinary Danube views (about an hour's hike up). Serves double duty: a midday transit stop en route to Vienna on the first pass through, and a base for the full extended Wachau stay later in the trip, when the apricot blossom should be in bloom.</p>
+    
+  </div>
+
+  <div class="entry" id="wachau-krems">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Krems an der Donau</p>
+    
+    <p class="entry-body">Train stop and gateway to the Wachau. The apricot blossom begins here in mid-to-late March before spreading up the valley. A reasonable lunch option if not detouring to Dürnstein.</p>
+    
+  </div>
+
+  <div class="entry" id="wachau-weissenkirchen">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Weißenkirchen in der Wachau (recommended base)</p>
+    
+    <p class="entry-body">Recommended base for the full Wachau stay. A romantic medieval village with a red-steeple church, vineyard walks, and a sandy Danube beach — quieter than Dürnstein. Vineyard apartments above the rooftops have magnificent views to the river. Full apricot blossom is expected across the valley by early April — roughly 100,000 trees in pink and white.</p>
+    
+  </div>
+
+  <div class="entry" id="wachau-melk">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Melk Abbey</p>
+    
+    <p class="entry-body">One of the great Baroque monasteries of Europe, perched dramatically above the Danube at the western end of the Wachau Valley, originally a fortified Benedictine abbey from the 11th century. Reachable by boat or bus. Allow a full morning.</p>
+    
+  </div>
+
+  <div class="entry" id="wachau-apricot-trail">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Apricot Trail (Marillenmeile), Rossatz-Arnsdorf</p>
+    
+    <p class="entry-body">The largest apricot-growing community in Austria. Marked walking paths through the orchards with views across the Danube to Dürnstein. In blossom, the trail is pink and white against the river and the castle ruins opposite.</p>
+    
+  </div>
+
+  <div class="entry" id="wachau-spitz">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Spitz an der Donau</p>
+    
+    <p class="entry-body">A quiet riverside town in the heart of the Wachau. Good for a cycling stop between villages on the flat riverside path, with local Heuriger wine taverns.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="vienna">
+    <div class="section-head">
+      <h2>Vienna</h2>
+      <span class="section-sub">Days 11–16 core, plus the farewell weeks — the heart of the pilgrimage</span>
+    </div>
+    
+  <div class="entry" id="vienna-arrival">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Vienna Hauptbahnhof — Arrival</p>
+    
+    <p class="entry-body">Your ceremonial arrival in Vienna. Beethoven arrived here in November 1792, by horse-drawn coach — a journey of several days from Bonn — to study with Haydn, supported by the Elector with a stipend. He would never leave. Over 35 years in this city he wrote the 9 symphonies, 32 piano sonatas, 16 string quartets, and everything else that made him Beethoven.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-beethovenplatz">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethovenplatz, Vienna</p>
+    
+    <p class="entry-body">A monumental statue of Beethoven near the Stadtpark, close to the Musikverein and Konzerthaus — the heart of Vienna's music quarter, and a natural orientation landmark.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-pasqualati">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Pasqualati House / Pasqualatihaus (Beethoven-Haus Wien)</p>
+    
+    <p class="entry-body">Mölker Bastei 8, 1st district. Beethoven lived here intermittently from 1804–1815 — longer than anywhere else in Vienna. Baron Pasqualati kept the apartment reserved for him even when Beethoven moved out, knowing he would return. Here he composed the 4th, 5th, 6th, and 7th Symphonies, the Violin Concerto, and Fidelio's final revisions.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-theater-an-der-wien">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-tentative">Tentative / not yet announced</span>
+    </div>
+    <p class="entry-name">Theater an der Wien — Concert</p>
+    
+    <p class="entry-body">Where the 5th and 6th Symphonies premiered on the same concert in December 1808, and where Beethoven's only opera, Fidelio, premiered on November 20, 1805 — with Napoleonic troops occupying Vienna. Strong anniversary programming is expected but the 2026/27 season announcement hasn't surfaced full March 2027 detail yet.</p>
+    <a class="entry-link" href="https://www.theater-wien.at" target="_blank" rel="noopener">www.theater-wien.at
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="vienna-haus-der-musik">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Haus der Musik, Vienna</p>
+    
+    <p class="entry-body">Seilerstätte 30. The Beethoven room includes a door from his final residence, personal memorabilia, and a multimedia installation exploring his progressive hearing loss. A good unhurried afternoon.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-kunsthistorisches">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Kunsthistorisches Museum, Vienna</p>
+    
+    <p class="entry-body">The great imperial art museum on the Ringstrasse, housing one of the world's supreme collections — Velázquez, Titian, Vermeer, Bruegel. This is the visual culture of Beethoven's aristocratic patrons: Prince Lobkowitz, Archduke Rudolph, Prince Lichnowsky moved through rooms decorated in exactly this taste.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-heiligenstadt-museum">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethoven Museum Heiligenstadt (Probusgasse 6)</p>
+    
+    <p class="entry-body">Probusgasse 6, Vienna's 19th district (Döbling). 265m² across 14 rooms — the house where Beethoven wrote the Heiligenstadt Testament in 1802, confronting his progressive deafness. Ear trumpets, personal objects, and a hearing laboratory. Allow 2–3 hours.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-beethovengang">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethovengang (Beethoven's Walk), Heiligenstadt</p>
+    
+    <p class="entry-body">The path along the Schreiberbach creek in Heiligenstadt where Beethoven walked daily during his 1802 retreat — composing in his head, processing his deafness, writing the Testament. The path still exists, shaded and quiet. Walking it in the knowledge of what he was carrying here — and what he would go on to create despite it — is one of the most quietly devastating experiences on the entire trip.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-heuriger-mayer">
+    <div class="entry-head">
+      <span class="tag tag-tavern">Tavern &amp; Rest</span>
+      
+      
+    </div>
+    <p class="entry-name">Heuriger Mayer am Pfarrplatz, Heiligenstadt</p>
+    
+    <p class="entry-body">A wine tavern in Heiligenstadt in a house where Beethoven himself lived briefly in 1817. Excellent Viennese wines with traditional cold platters — good for lunch or an afternoon glass after the Beethovengang walk.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-eroica-house">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Eroica House, Döbling</p>
+    
+    <p class="entry-body">Döblinger Hauptstraße 92. Where Beethoven wrote the Third Symphony ("Eroica") in 1803. A quieter, less-visited site with documents on the first performance and images of Döbling as it was in Beethoven's time.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-schwarzspanierstrasse">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Schwarzspanierstraße — Beethoven's Final Residence</p>
+    
+    <p class="entry-body">The site where Beethoven died on March 26, 1827. The original building is gone but the replacement carries reliefs and plaques marking its historical significance. A quiet, important visit.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-alserkirche">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Alserkirche, Vienna</p>
+    
+    <p class="entry-body">The church where Beethoven's funeral was held on March 29, 1827, attended by thousands. A short walk from Schwarzspanierstraße; a plaque outside commemorates the occasion. Also has a Schubert connection.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-musikverein">
+    <div class="entry-head">
+      <span class="tag tag-flagship">★ Confirmed Event</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Musikverein Vienna — Golden Hall</p>
+    <p class="entry-event">Mar 20 (15:30 mat.), Mar 21 (11:00 mat.), Mar 26 (19:30) — Missa Solemnis</p>
+    <p class="entry-body">The Gesellschaft der Musikfreunde — home of the Vienna Philharmonic and arguably the greatest concert hall in the world. The Goldener Saal, completed in 1870, is a shoebox-design hall of near-perfect acoustics. <b>Confirmed as a three-concert run:</b> Sat Mar 20 (matinee, 15:30), Sun Mar 21 (matinee, 11:00), and <b>Fri Mar 26 (19:30)</b> — the 200th anniversary of Beethoven's death, to the day. All three: Franz Welser-Möst conducting the VPO and the Singverein der Gesellschaft der Musikfreunde in the <b>Missa Solemnis</b>, with soloists Golda Schultz (soprano), Deniz Uzun (mezzo), Daniel Behle (tenor), and Martin Summer (bass). March 26 is the single most important ticket of the entire trip.</p>
+    <a class="entry-link" href="https://www.musikverein.at" target="_blank" rel="noopener">www.musikverein.at
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="vienna-konzerthaus">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-tentative">Tentative / not yet announced</span>
+    </div>
+    <p class="entry-name">Konzerthaus Vienna</p>
+    
+    <p class="entry-body">Vienna's other great concert hall, home to the Wiener Symphoniker. Likely to carry major anniversary programming throughout the week of March 20–26 — potentially including the late string quartets (Op. 131 or Op. 132), the most private works Beethoven ever wrote, composed in total deafness. No confirmed March 2027 date yet.</p>
+    <a class="entry-link" href="https://www.konzerthaus.at" target="_blank" rel="noopener">www.konzerthaus.at
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="vienna-staatsoper-fidelio">
+    <div class="entry-head">
+      <span class="tag tag-flagship">★ Confirmed Event</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Wiener Staatsoper — Fidelio</p>
+    <p class="entry-event">Jan 9, 12, 15, 18, 2027</p>
+    <p class="entry-body">Beethoven's only opera, in a new production directed by Nikolaus Habjan that premiered December 16, 2025, conducted by Franz Welser-Möst with the VPO in the pit. <b>Confirmed 2027 repertory performances: January 9, 12, 15, and 18.</b> This falls before your current arrival date (March 10) — outside the window as currently planned, but flagged since it's the single Beethoven opera performance confirmed in Vienna this anniversary season, and worth knowing about even if you don't shift the trip to catch it.</p>
+    <a class="entry-link" href="https://www.wiener-staatsoper.at" target="_blank" rel="noopener">www.wiener-staatsoper.at
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="vienna-zentralfriedhof">
+    <div class="entry-head">
+      <span class="tag tag-flagship">★ Confirmed Event</span>
+      
+      
+    </div>
+    <p class="entry-name">★ Zentralfriedhof — Beethoven's Grave</p>
+    
+    <p class="entry-body">Vienna's great central cemetery, and the most moving place in European musical culture. Beethoven was originally buried at Währing cemetery in 1827; in 1888 his remains were reinterred here in the Ehrengräber (Honorary Graves) section, alongside Franz Schubert — who was buried at his own request near Beethoven and died just 18 months after him. Brahms, Hugo Wolf, and the Strauss family are nearby. On the morning of the 200th anniversary of his death, this will be one of the most moving places on earth.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="baden">
+    <div class="section-head">
+      <h2>Baden bei Wien</h2>
+      <span class="section-sub">Extended weeks · Beethoven summered here 15 times — dates flexible</span>
+    </div>
+    
+  <div class="entry" id="baden-beethovenhaus">
+    <div class="entry-head">
+      <span class="tag tag-museum">Museum</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethoven-Haus Baden (Haus der Neunten)</p>
+    
+    <p class="entry-body">Rathausgasse 10, Baden bei Wien — 40 minutes south of Vienna by train. Known as the "House of the Ninth" — Beethoven stayed here in 1821, 1822, and 1823 and composed significant portions of the Ninth Symphony during his Baden summers. A modern museum with an interactive hearing laboratory, original piano, and personal belongings. A profound visit given you'll have just heard the Ninth performed in Vienna.</p>
+    
+  </div>
+
+  <div class="entry" id="baden-kurpark">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Kurpark Baden bei Wien</p>
+    
+    <p class="entry-body">The elegant spa park at the heart of Baden bei Wien, where Beethoven walked daily during his 15 summer retreats. He was a notorious walker — friends reported he walked for hours, humming, beating time, ignoring passers-by. A beautiful green space, largely unchanged in character.</p>
+    
+  </div>
+
+  <div class="entry" id="baden-roemertherme">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Römertherme Baden (Roman Thermal Baths)</p>
+    
+    <p class="entry-body">Thermal baths with Roman origins, still functioning. Baden has been a thermal spa town since antiquity — Beethoven himself came here for the healing waters. A genuine spa day fits naturally at this point in the journey.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="moedling">
+    <div class="section-head">
+      <h2>Mödling</h2>
+      <span class="section-sub">Version B extended-route option — Beethoven's other retreat village</span>
+    </div>
+    
+  <div class="entry" id="moedling-village">
+    <div class="entry-head">
+      <span class="tag tag-extended">Wachau / Extended</span>
+      
+      
+    </div>
+    <p class="entry-name">Mödling (Beethoven Retreat Village)</p>
+    
+    <p class="entry-body">A small town 16km south of Vienna, where Beethoven spent summers in 1818–20. He worked on the Missa Solemnis and the Hammerklavier Sonata (Op. 106) here. The Hafnerhaus, where he stayed, is preserved. A gentle, beautiful stop — quieter than Baden, less visited, and full of unhurried provincial atmosphere.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="vienna-farewell">
+    <div class="section-head">
+      <h2>Vienna — Farewell Weeks</h2>
+      <span class="section-sub">Days 27–30 · fresh eyes, no pilgrimage agenda — dates flexible</span>
+    </div>
+    
+  <div class="entry" id="vienna-naschmarkt">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Naschmarkt, Vienna</p>
+    
+    <p class="entry-body">Vienna's great open-air market. Sunday morning is the best time — a long, leisurely browse through food stalls, coffee, and the city at its most local.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-belvedere">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Belvedere Palace & Gardens, Vienna</p>
+    
+    <p class="entry-body">The Upper and Lower Belvedere palaces with formal Baroque gardens. Home to Klimt's The Kiss. A grand afternoon that needs no Beethoven agenda — just Vienna at its most magnificent.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-schoenbrunn">
+    <div class="entry-head">
+      <span class="tag tag-sight">Sight</span>
+      
+      
+    </div>
+    <p class="entry-name">Schönbrunn Palace & Gardens, Vienna</p>
+    
+    <p class="entry-body">The Habsburg imperial palace with vast formal gardens. A proper visit with time for the gardens and the Gloriette viewpoint. Beethoven performed here as a young man for Emperor Joseph II.</p>
+    
+  </div>
+
+  <div class="entry" id="vienna-cafe-sacher">
+    <div class="entry-head">
+      <span class="tag tag-tavern">Tavern &amp; Rest</span>
+      
+      
+    </div>
+    <p class="entry-name">Café Sacher, Vienna</p>
+    
+    <p class="entry-body">The home of the original Sachertorte, behind the Vienna State Opera. A quintessential Vienna afternoon — coffee, cake, and the city's elegant pace.</p>
+    
+  </div>
+  </section>
+
+  <section class="city-section" id="network">
+    <div class="section-head">
+      <h2>The Wider Anniversary Landscape</h2>
+      <span class="section-sub">Beyond the core route — for the true Beethoven nuts</span>
+    </div>
+    
+  <div class="entry" id="network-beethoven27">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      
+    </div>
+    <p class="entry-name">Beethoven27 — EU Anniversary Project</p>
+    
+    <p class="entry-body">A network of 27 EU cities coordinating anniversary events across 2027. The single best overview of the full landscape — track events across Bonn, Cologne, Vienna, and beyond from one place rather than monitoring each venue individually.</p>
+    <a class="entry-link" href="https://www.beethoven27.com" target="_blank" rel="noopener">www.beethoven27.com
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>
+  </div>
+
+  <div class="entry" id="network-levit-sonatas">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Igor Levit — Complete Beethoven Piano Sonatas</p>
+    <p class="entry-event">Eight-recital cycle, October 2026 – June 2028, Vienna among the venues — exact Vienna dates not yet published</p>
+    <p class="entry-body">Levit is performing his complete cycle of all 32 Beethoven sonatas as eight-recital series across New York, London, Vienna, Berlin, Munich, Hamburg, and North Rhine-Westphalia, running October 2026 through June 2028. Vienna is confirmed as a venue (almost certainly Musikverein, given his history there) but the specific 2027 recital dates for the Vienna leg haven't surfaced yet — worth checking closer to autumn 2026.</p>
+    
+  </div>
+
+  <div class="entry" id="network-wiener-concertverein">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Wiener Concert-Verein — Beethoven/Mahler, May 19, 2027</p>
+    <p class="entry-event">Wednesday, May 19, 2027, 19:30, Musikverein Brahms Saal</p>
+    <p class="entry-body">A subscription concert (ABO IV) pairing Bruckner, Kralik von Meyerswalden, and Bodorova with Beethoven's String Quartet in F minor, Op. 95 — arranged for string orchestra by Gustav Mahler. A genuinely rare pairing: Beethoven filtered through Mahler's ears, in the Brahms Saal. Falls after your currently-planned departure (April 9) but squarely within the anniversary year, and within the newly expanded through-June window.</p>
+    
+  </div>
+
+  <div class="entry" id="network-vpo-june">
+    <div class="entry-head">
+      <span class="tag tag-concert">Concert</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Vienna Philharmonic — Musikverein, June 19, 2027</p>
+    <p class="entry-event">Saturday, June 19, 2027, 19:30, Musikverein Brahmssaal</p>
+    <p class="entry-body">A VPO programme pairing Fanny Cäcilie Mendelssohn Bartholdy, Beethoven, and Tchaikovsky. Falls well after the current departure date but is confirmed on the VPO's own calendar and sits within the expanded through-June tracking window.</p>
+    
+  </div>
+
+  <div class="entry" id="network-gewandhaus-leipzig">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Gewandhaus Leipzig — Beethoven Festival</p>
+    <p class="entry-event">May 11–23, 2027</p>
+    <p class="entry-body">Off your current route entirely, but a major piece of the anniversary landscape: the Gewandhaus zu Leipzig is running its own dedicated Beethoven festival from May 11 to 23, 2027, with symphony concerts, chamber music, choral concerts and recitals featuring Gautier Capuçon, Lang Lang, and Augustin Hadelich among others.</p>
+    
+  </div>
+
+  <div class="entry" id="network-elbphilharmonie-hamburg">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Elbphilharmonie Hamburg — Complete Symphony Cycle</p>
+    <p class="entry-event">Four-concert cycle; one confirmed date so far — Sunday, June 20, 2027</p>
+    <p class="entry-body">Also off-route: the Orchestra Wiener Akademie is performing all nine Beethoven symphonies across four anniversary concerts at the Elbphilharmonie's Grand Hall in 2027, marking the 200th anniversary. Only one specific date has surfaced so far — Sunday, June 20, 2027, pairing the 8th and 9th Symphonies — with the other three dates in the cycle not yet published.</p>
+    
+  </div>
+
+  <div class="entry" id="network-bonn-discussion">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Beethoven-Haus Bonn — Anniversary Discussion Concert</p>
+    <p class="entry-event">March 26, 2027 (Beethoven-Haus Bonn)</p>
+    <p class="entry-body">On the anniversary of Beethoven's death itself, the Beethoven-Haus Bonn hosts a traditional discussion concert: pianist/conductor/composer Fabian Müller performs his own bagatelles alongside the opening movements of several Beethoven piano sonatas, part of the "32 Bagatelles for Beethoven" project. A lovely idea in principle — but by March 26 the current itinerary has the group in Vienna for the flagship concert, so this one is a scheduling conflict, not an addition, unless the whole route gets rethought.</p>
+    
+  </div>
+
+  <div class="entry" id="network-cleveland-carnegie">
+    <div class="entry-head">
+      <span class="tag tag-network">Beyond the Route</span>
+      
+      <span class="status-chip status-confirmed">Confirmed</span>
+    </div>
+    <p class="entry-name">Cleveland Orchestra — Missa Solemnis (Cleveland & Carnegie Hall)</p>
+    <p class="entry-event">Jan 14 & 16 (Severance, Cleveland), Jan 19 (Carnegie Hall, NYC)</p>
+    <p class="entry-body">Well outside Europe entirely, but notable: Franz Welser-Möst's farewell season with the Cleveland Orchestra includes Beethoven's Missa Solemnis at Severance Music Center (Jan 14 & 16, 2027) and at Carnegie Hall (Jan 19, 2027), with soprano Golda Schultz — the same soloist confirmed for the Musikverein's own Missa Solemnis in March. Included here purely for completeness.</p>
+    
+  </div>
+  </section>
+</main>
+
+<footer>
+  <em>"Music is a higher revelation than all wisdom and philosophy."</em>
+  Beethoven Pilgrimage 2027 · The Catalog · Updated 14 July 2026 · Companion to the Concert Monitor
+</footer>
+
+</body>
+</html>

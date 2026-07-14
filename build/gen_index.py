@@ -206,6 +206,38 @@ CSS = """
     color: var(--ink-faint-on-dark);
   }
 
+  /* ── SITE NAV ── */
+  .site-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .site-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    max-width: 230px;
+  }
+  .site-nav-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--gold-light);
+  }
+  a.site-nav-item:hover .site-nav-label { color: var(--paper); }
+  .site-nav-item.current .site-nav-label { color: var(--paper); }
+  .site-nav-desc {
+    font-size: 0.74rem;
+    color: var(--ink-faint-on-dark);
+    line-height: 1.5;
+  }
+
   /* ── INTRO BAND ── */
   .intro-band {
     background: var(--ink-mid);
@@ -553,6 +585,20 @@ HTML = f'''<!DOCTYPE html>
   <p class="header-subtitle">{MONITOR_META["header_subtitle"]}</p>
   <div class="header-rule"></div>
   <p class="header-meta">{MONITOR_META["header_meta"]}</p>
+  <nav class="site-nav">
+    <a class="site-nav-item" href="catalog.html">
+      <span class="site-nav-label">The Catalog</span>
+      <span class="site-nav-desc">Every sight, museum, tavern &amp; event, organized by place</span>
+    </a>
+    <span class="site-nav-item current">
+      <span class="site-nav-label">Concert Monitor</span>
+      <span class="site-nav-desc">Live ticket status and booking urgency for every venue</span>
+    </span>
+    <a class="site-nav-item" href="beethoven_pilgrimage_2027_catalog.kml">
+      <span class="site-nav-label">Download Map (.kml)</span>
+      <span class="site-nav-desc">Every entry plotted — open in Google Earth, or import into Google Maps via My Maps</span>
+    </a>
+  </nav>
 </header>
 
 <div class="intro-band">

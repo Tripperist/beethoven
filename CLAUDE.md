@@ -18,6 +18,7 @@ Beethoven-related worth knowing about, on-route or not.
 | `build/gen_catalog.py` | Reads `data.py` → writes `catalog.html` |
 | `build/gen_kml.py` | Reads `data.py` → writes the `.kml` |
 | `build/gen_index.py` | Reads `data.py` → writes `index.html` (the concert monitor) |
+| `build/add_place.py` | CLI to add a new place to `data.py` and regenerate all three files — see `--help` |
 | `LICENSE` | MIT |
 
 ## Critical rule: regenerate, don't hand-edit

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys, re
 sys.path.insert(0, '.')
-from data import SECTIONS, ROOT, CATALOG_URL
+from data import SECTIONS, ROOT, CATALOG_URL, INDEX_URL, maps_url
 
 KIND_LABEL = {
     "sight": "Sight",
@@ -38,10 +38,19 @@ def render_entry(e):
     route_html = ""
     if e.get("route_tag"):
         route_html = f'<span class="tag route-tag">{e["route_tag"]}</span>'
+    arrow_svg = '<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg>'
     link_html = ""
     if e.get("link"):
         link_html = f'''<a class="entry-link" href="{e["link"]}" target="_blank" rel="noopener">{e["link"].replace("https://","").replace("http://","").rstrip("/")}
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M5 2h5v5"/></svg></a>'''
+        {arrow_svg}</a>'''
+    maps_html = ""
+    if e.get("coords"):
+        maps_html = f'''<a class="entry-link" href="{maps_url(e["coords"])}" target="_blank" rel="noopener">View on Google Maps
+        {arrow_svg}</a>'''
+    monitor_html = ""
+    if e.get("monitor"):
+        monitor_html = f'''<a class="entry-link" href="{INDEX_URL}#{e["id"]}" target="_blank" rel="noopener">Booking status in the Concert Monitor
+        {arrow_svg}</a>'''
     return f'''
   <div class="entry" id="{e["id"]}">
     <div class="entry-head">
@@ -52,7 +61,11 @@ def render_entry(e):
     <p class="entry-name">{e["name"]}</p>
     {event_html}
     <p class="entry-body">{e["body"]}</p>
-    {link_html}
+    <div class="entry-links">
+      {link_html}
+      {maps_html}
+      {monitor_html}
+    </div>
   </div>'''
 
 def render_section(sec):
@@ -148,6 +161,7 @@ HTML = f'''<!DOCTYPE html>
   .entry-event {{ font-size: 0.82rem; color: var(--urgent); font-weight: 600; margin-bottom: 0.5rem; }}
   .entry-body {{ font-size: 0.9rem; color: var(--ink-mid); line-height: 1.65; margin-bottom: 0.6rem; }}
   .entry-body b {{ font-weight: 600; color: var(--ink); }}
+  .entry-links {{ display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; }}
   .entry-link {{ font-size: 0.78rem; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border-bottom: 1px solid transparent; }}
   .entry-link:hover {{ border-bottom-color: var(--gold-light); }}
 

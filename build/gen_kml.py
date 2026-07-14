@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.insert(0, '.')
-from data import SECTIONS, STYLE_FOR_KIND, CATALOG_URL
+from data import SECTIONS, STYLE_FOR_KIND, CATALOG_URL, INDEX_URL, maps_url
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;") if s else s
@@ -21,9 +21,14 @@ def render_placemark(e):
     elif e.get("status") == "tentative":
         event_line = "<b>[TENTATIVE — no confirmed date yet]</b><br/><br/>\n        "
 
+    monitor_line = ""
+    if e.get("monitor"):
+        monitor_line = f'\n        <br/><a href="{INDEX_URL}#{e["id"]}">Booking status in the Concert Monitor →</a>'
+
     desc = f"""
         {event_line}{body}<br/><br/>
         <a href=\"{anchor}\">Full entry in the Beethoven Catalog →</a>
+        <br/><a href=\"{maps_url(e['coords'])}\">View on Google Maps →</a>{monitor_line}
       """
 
     timestamp_block = ""

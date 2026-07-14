@@ -5,6 +5,12 @@
 
 ROOT = "https://tripperist.github.io/beethoven/"
 CATALOG_URL = ROOT + "catalog.html"
+INDEX_URL = ROOT + "index.html"
+
+def maps_url(coords):
+    # coords are stored KML-style as "lon,lat,alt" — Google Maps wants "lat,lon"
+    lon, lat, *_ = coords.split(",")
+    return f"https://www.google.com/maps?q={lat},{lon}"
 
 # kind -> kml styleUrl
 STYLE_FOR_KIND = {
@@ -27,7 +33,11 @@ SECTIONS = [
       {"id":"bonn-beethovenhaus","name":"Beethoven-Haus Bonn (Birthplace)","kind":"museum",
        "coords":"7.0977,50.7333,0",
        "body":"Bonngasse 20 — the house where Ludwig van Beethoven was born on or around December 16, 1770. Now one of the world's great composer museums, it holds original manuscripts in his own hand, his remarkable collection of ear trumpets (made as his deafness progressed), the Broadwood grand piano gifted to him by the London makers, and a lock of his hair. Expect a major 200th-anniversary exhibition running through 2027 — allow a full morning. This is the heart of the pilgrimage's first act.",
-       "link":"https://www.beethoven.de"},
+       "link":"https://www.beethoven.de",
+       "monitor":{"card_class":"high",
+         "desc":"The birthplace museum runs its own chamber concert series, often in the historic courtyard. Expect a major 200th anniversary season from late 2026. <strong>Sign up for their newsletter now</strong> — this will be the spiritual centre of the entire anniversary year.",
+         "chips":[{"text":"Mar 10–12"},{"text":"Chamber · museum events"}],
+         "badge":{"text":"High priority","class":"high"}}},
       {"id":"bonn-minster","name":"Bonn Minster / St. Remigius Church (Baptism)","kind":"sight",
        "coords":"7.0989,50.7325,0",
        "body":"Two significant Beethoven sacred sites in close proximity. <b>Bonn Minster (Bonner Münster)</b> — the great Gothic-Romanesque minster where the teenage Beethoven served as court organist; playing here was one of his first professional musical roles, and the baptismal register entry still exists. <b>St. Remigius Church</b> — the parish church where Ludwig van Beethoven was baptized on December 17, 1770, the day after his presumed birth date. A humble but profoundly significant stop: the earliest documented moment of his existence."},
@@ -45,7 +55,11 @@ SECTIONS = [
        "status":"confirmed","event_dates":["2027-03-25"],
        "event_label":"Friday, March 25, 2027, 19:30 — Missa Solemnis",
        "body":"Bonn's own concert hall and orchestra, home turf of the Freitagskonzert series. <b>Confirmed:</b> Friday, March 25, 2027, 19:30 — the Beethoven Orchester Bonn performs the <b>Missa Solemnis</b> with soprano Chen Reiss, the season's liturgical centrepiece for the 200th anniversary of Beethoven's death — performed, fittingly, in his hometown. General public booking opened June 26, 2026 and is live now. Falls just outside the current Day 1–3 Bonn window — worth weighing whether the itinerary should stretch to catch it.",
-       "link":"https://www.beethoven-orchester.de"},
+       "link":"https://www.beethoven-orchester.de",
+       "monitor":{"card_class":"urgent",
+         "desc":"<strong>Confirmed: Friday, March 25, 2027, 19:30, Beethovenhalle Großer Saal</strong> — the \"Freitagskonzert\" performing Beethoven's Missa Solemnis with soprano Chen Reiss, as the season's liturgical centrepiece for the 200th anniversary. This falls just outside your current Bonn window (Days 1–3, Mar 10–12) — worth deciding whether the itinerary should shift to catch it, since it's a genuinely rare pairing of the work with the composer's own hometown orchestra. <strong>General public booking has been open since June 26, 2026</strong> — this is bookable today, not a future date to watch for.",
+         "chips":[{"text":"Mar 25, 19:30 — confirmed","variant":"confirmed"},{"text":"Booking open now","variant":"confirmed"},{"text":"Chen Reiss, soprano"}],
+         "badge":{"text":"★ Book now","class":"urgent"}}},
     ],
   },
   {
@@ -54,7 +68,11 @@ SECTIONS = [
       {"id":"cologne-philharmonie","name":"Kölner Philharmonie — Concert","kind":"concert",
        "coords":"6.9603,50.9382,0","status":"tentative",
        "body":"One of Germany's premier concert halls, 25–30 minutes by train from Bonn, home to the WDR Sinfonieorchester and the Gürzenich-Orchester. Anniversary programming is expected — a concert here would ideally sit early in the biographical arc: Beethoven in his first voice, before deafness, before the heroic style, full of promise and searching energy — Op. 1 Piano Trios, early piano sonatas, or chamber music from the Bonn and early Vienna years. Exact 2027 programme not yet published; check from autumn 2026.",
-       "link":"https://www.koelner-philharmonie.de"},
+       "link":"https://www.koelner-philharmonie.de",
+       "monitor":{"card_class":"high",
+         "desc":"One of Germany's great halls, 25 minutes by train from Bonn. Both the WDR Sinfonieorchester and Gürzenich-Orchester are based here — anniversary programming very likely on your <strong>Day 3 evening (March 12)</strong>. Return to Bonn by late evening.",
+         "chips":[{"text":"Mar 12 evening"},{"text":"Orchestral"}],
+         "badge":{"text":"Book now","class":"high"}}},
       {"id":"cologne-cathedral","name":"Cologne Cathedral (Kölner Dom)","kind":"sight","route_tag":"Version B route",
        "coords":"6.9583,50.9413,0",
        "body":"One of the supreme achievements of Gothic architecture — begun in 1248, completed in 1880. Beethoven knew this city well; Cologne was the seat of the Elector he served. Standing before the Dom, you understand the scale of the world Beethoven inhabited: the Catholic Rhine, ancient and grand, the backdrop against which his secular, revolutionary music took shape."},
@@ -146,7 +164,11 @@ SECTIONS = [
        "coords":"14.2958,48.3031,0","status":"confirmed",
        "event_label":"2026/27 cycle continuing — exact March 2027 date not yet published",
        "body":"One of Europe's leading concert halls, on the Danube. Markus Poschner and the Bruckner Orchester Linz are performing a <b>complete Beethoven symphony cycle across the 2025/26 and 2026/27 seasons</b> — Poschner's final season as chief conductor before Christoph Koncz takes over in 2027/28. <b>Worth knowing:</b> the Linz cycle is echoed the very next day at the Musikverein Golden Hall in Vienna, so a Linz concert may share a programme with something bookable a day later in the capital. <b>Beethoven link:</b> in 1812 Beethoven stayed in Linz with his brother Johann and sketched the 8th Symphony here during a period of family conflict — the jovial symphony born from strife.",
-       "link":"https://www.brucknerhaus.at"},
+       "link":"https://www.brucknerhaus.at",
+       "monitor":{"card_class":"urgent",
+         "desc":"Markus Poschner and the Bruckner Orchester Linz are performing a <strong>complete Beethoven symphony cycle across 2025/26 and 2026/27</strong> — his final season as chief conductor before Christoph Koncz takes over in 2027/28. <strong>Worth knowing:</strong> the Linz subscription cycle is now confirmed to be repeated the very next day at the Musikverein Golden Hall in Vienna — so a concert on your Day 9 in Linz may share a programme with something bookable a day later in Vienna. Specific March 2027 dates aren't published yet; expected with the full 2026/27 season details. <em>Beethoven link: in 1812 he stayed in Linz with his brother and sketched the 8th Symphony here.</em>",
+         "chips":[{"text":"Cycle confirmed 2026/27","variant":"confirmed"},{"text":"Mar 18 evening — exact date TBC"},{"text":"Echoed next day at Musikverein"}],
+         "badge":{"text":"★ Book early","class":"urgent"}}},
       {"id":"linz-st-florian","name":"St. Florian Abbey (optional excursion)","kind":"sight",
        "coords":"14.3758,48.2058,0",
        "body":"18km south of Linz. One of the great Baroque monasteries of Austria. Anton Bruckner's primary connection — he played the organ here and is buried in the crypt beneath it. A magnificent half-day excursion, easy by car or local bus."},
@@ -190,7 +212,11 @@ SECTIONS = [
       {"id":"vienna-theater-an-der-wien","name":"Theater an der Wien — Concert","kind":"concert",
        "coords":"16.3581,48.2008,0","status":"tentative",
        "body":"Where the 5th and 6th Symphonies premiered on the same concert in December 1808, and where Beethoven's only opera, Fidelio, premiered on November 20, 1805 — with Napoleonic troops occupying Vienna. Strong anniversary programming is expected but the 2026/27 season announcement hasn't surfaced full March 2027 detail yet.",
-       "link":"https://www.theater-wien.at"},
+       "link":"https://www.theater-wien.at",
+       "monitor":{"card_class":"high",
+         "desc":"Where the 5th and 6th Symphonies premiered on the <em>same concert</em> in December 1808, and where Fidelio premiered in 1805 — with Napoleonic troops occupying Vienna. Strong 2027 anniversary programming expected. <strong>Watch for their season announcement (typically spring/summer 2026).</strong>",
+         "chips":[{"text":"Mar 21 evening"},{"text":"Opera · orchestral"}],
+         "badge":{"text":"Watch for season","class":"high"}}},
       {"id":"vienna-haus-der-musik","name":"Haus der Musik, Vienna","kind":"museum",
        "coords":"16.3736,48.2039,0",
        "body":"Seilerstätte 30. The Beethoven room includes a door from his final residence, personal memorabilia, and a multimedia installation exploring his progressive hearing loss. A good unhurried afternoon."},
@@ -220,17 +246,47 @@ SECTIONS = [
        "event_dates":["2027-03-20","2027-03-21","2027-03-26"],
        "event_label":"Mar 20 (15:30 mat.), Mar 21 (11:00 mat.), Mar 26 (19:30) — Missa Solemnis",
        "body":"The Gesellschaft der Musikfreunde — home of the Vienna Philharmonic and arguably the greatest concert hall in the world. The Goldener Saal, completed in 1870, is a shoebox-design hall of near-perfect acoustics. <b>Confirmed as a three-concert run:</b> Sat Mar 20 (matinee, 15:30), Sun Mar 21 (matinee, 11:00), and <b>Fri Mar 26 (19:30)</b> — the 200th anniversary of Beethoven's death, to the day. All three: Franz Welser-Möst conducting the VPO and the Singverein der Gesellschaft der Musikfreunde in the <b>Missa Solemnis</b>, with soloists Golda Schultz (soprano), Deniz Uzun (mezzo), Daniel Behle (tenor), and Martin Summer (bass). March 26 is the single most important ticket of the entire trip.",
-       "link":"https://www.musikverein.at"},
+       "link":"https://www.musikverein.at",
+       "monitor":{"card_class":"urgent",
+         "desc":"Home of the Vienna Philharmonic and arguably the greatest concert hall in the world. <strong>The Welser-Möst Missa Solemnis programme is now confirmed as a three-concert run</strong> rather than a single date: <strong>Sat Mar 20 (matinee, 15:30)</strong>, <strong>Sun Mar 21 (matinee, 11:00)</strong>, and <strong>Fri Mar 26 (19:30)</strong> — this last falling exactly on the 200th anniversary of Beethoven's death. All three are Welser-Möst conducting the VPO and Singverein der Gesellschaft der Musikfreunde, with soloists <strong>Golda Schultz (soprano), Deniz Uzun (mezzo), Daniel Behle (tenor), and Martin Summer (bass)</strong>. The March 26 evening remains the single most important ticket of the entire trip and may sell out within hours of going on sale — monitor both the Musikverein and VPO sites.",
+         "chips":[{"text":"Mar 20, 15:30 — confirmed","variant":"confirmed"},{"text":"Mar 21, 11:00 — confirmed","variant":"confirmed"},{"text":"★ Mar 26, 19:30 — flagship","variant":"flagship"}],
+         "badge":{"text":"★ Urgent","class":"urgent"}}},
+      {"id":"vienna-philharmonic","name":"Vienna Philharmonic (Wiener Philharmoniker)","kind":"concert",
+       "coords":"16.3722,48.2006,0","status":"confirmed",
+       "event_dates":["2027-03-20","2027-03-21","2027-03-26"],
+       "event_label":"Mar 20, 21 & 26 — Missa Solemnis at the Musikverein",
+       "body":"Founded in 1842, the VPO is a self-governing collective of Musikverein and Wiener Staatsoper musicians rather than a conventional orchestra, and Beethoven's symphonies have anchored its repertoire since the 19th century — it gave the Vienna premiere of the Ninth under Otto Nicolai in 1843. For the anniversary, the orchestra's own box office runs a separate ticketing track from the Musikverein itself, worth watching in parallel rather than assuming one covers the other.",
+       "link":"https://www.wienerphilharmoniker.at",
+       "monitor":{"card_class":"urgent",
+         "desc":"Book directly on the VPO site <em>as well as</em> Musikverein — ticket allocations sometimes differ. <strong>Create an account and enable concert alerts now</strong> for 2027 announcements. Confirmed as related but separate mechanism: the VPO's own <strong>standing-room subscription sale opens Monday, September 14, 2026, at 9:30am</strong> — bought only in person at the box office (Kärntner Ring 12). Seated single tickets for the March dates will follow a separate general on-sale not yet confirmed. On March 26 release day: have both Musikverein and VPO tabs open simultaneously.",
+         "chips":[{"text":"Mar 20 & 21 — confirmed","variant":"confirmed"},{"text":"Standing-room sale: Sep 14, 2026","variant":"confirmed"},{"text":"★ Mar 26 anniversary","variant":"flagship"}],
+         "badge":{"text":"★ Urgent","class":"urgent"}}},
       {"id":"vienna-konzerthaus","name":"Konzerthaus Vienna","kind":"concert",
        "coords":"16.3808,48.2003,0","status":"tentative",
        "body":"Vienna's other great concert hall, home to the Wiener Symphoniker. Likely to carry major anniversary programming throughout the week of March 20–26 — potentially including the late string quartets (Op. 131 or Op. 132), the most private works Beethoven ever wrote, composed in total deafness. No confirmed March 2027 date yet.",
-       "link":"https://www.konzerthaus.at"},
+       "link":"https://www.konzerthaus.at",
+       "monitor":{"card_class":"high",
+         "desc":"Home of the Wiener Symphoniker. Likely to carry major anniversary programming throughout the week of March 20–26 — a strong option for the <strong>pre-anniversary evenings</strong> (March 23, 25) and potentially a parallel flagship program on March 26.",
+         "chips":[{"text":"Mar 23 · Mar 25"},{"text":"Orchestral · chamber"}],
+         "badge":{"text":"High priority","class":"high"}}},
+      {"id":"vienna-wiener-symphoniker","name":"Wiener Symphoniker (Vienna Symphony)","kind":"concert",
+       "coords":"16.3808,48.2003,0","status":"tentative",
+       "body":"Founded in 1900 and the Konzerthaus's resident orchestra since 1913, the Wiener Symphoniker is distinct from the Musikverein-based Vienna Philharmonic and plays a full Beethoven-inclusive subscription season most years. Its own direct ticketing sometimes carries allocations before the Konzerthaus box office sells the same concerts publicly — worth tracking as a separate channel into the same hall.",
+       "link":"https://www.wiener-symphoniker.at",
+       "monitor":{
+         "desc":"The Vienna Symphony's own site sometimes carries allocations before Konzerthaus sells publicly. Sign up for their newsletter to catch early releases.",
+         "chips":[{"text":"Mar 19–30"}],
+         "badge":{"text":"Newsletter","class":"watch"}}},
       {"id":"vienna-staatsoper-fidelio","name":"Wiener Staatsoper — Fidelio","kind":"flagship",
        "coords":"16.3688,48.2035,0","status":"confirmed",
        "event_dates":["2027-01-09","2027-01-12","2027-01-15","2027-01-18"],
        "event_label":"Jan 9, 12, 15, 18, 2027",
        "body":"Beethoven's only opera, in a new production directed by Nikolaus Habjan that premiered December 16, 2025, conducted by Franz Welser-Möst with the VPO in the pit. <b>Confirmed 2027 repertory performances: January 9, 12, 15, and 18.</b> This falls before your current arrival date (March 10) — outside the window as currently planned, but flagged since it's the single Beethoven opera performance confirmed in Vienna this anniversary season, and worth knowing about even if you don't shift the trip to catch it.",
-       "link":"https://www.wiener-staatsoper.at"},
+       "link":"https://www.wiener-staatsoper.at",
+       "monitor":{
+         "desc":"<strong>Fidelio — Beethoven's only opera — is almost certain to be staged here during the anniversary year.</strong> A performance in late March would be extraordinary: the opera is about political imprisonment and liberation, composed by a man who believed in human freedom absolutely. Check the 2026/27 season announcement.",
+         "chips":[{"text":"Late Mar 2027"},{"text":"Fidelio likely"}],
+         "badge":{"text":"Worth checking","class":"purple"}}},
       {"id":"vienna-zentralfriedhof","name":"★ Zentralfriedhof — Beethoven's Grave","kind":"flagship",
        "coords":"16.4392,48.1472,0",
        "body":"Vienna's great central cemetery, and the most moving place in European musical culture. Beethoven was originally buried at Währing cemetery in 1827; in 1888 his remains were reinterred here in the Ehrengräber (Honorary Graves) section, alongside Franz Schubert — who was buried at his own request near Beethoven and died just 18 months after him. Brahms, Hugo Wolf, and the Strauss family are nearby. On the morning of the 200th anniversary of his death, this will be one of the most moving places on earth."},
@@ -281,7 +337,11 @@ SECTIONS = [
       {"id":"network-beethoven27","name":"Beethoven27 — EU Anniversary Project","kind":"network",
        "coords":"16.3725,48.2005,0",
        "body":"A network of 27 EU cities coordinating anniversary events across 2027. The single best overview of the full landscape — track events across Bonn, Cologne, Vienna, and beyond from one place rather than monitoring each venue individually.",
-       "link":"https://www.beethoven27.com"},
+       "link":"https://www.beethoven27.com",
+       "monitor":{
+         "desc":"A network of 27 EU cities coordinating anniversary events across 2027. <strong>The single best overview of the full landscape</strong> — track events across Bonn, Cologne, Vienna and beyond from one place, rather than monitoring each venue individually.",
+         "chips":[{"text":"Multi-city · all dates"}],
+         "badge":{"text":"Monitor now","class":"purple"}}},
       {"id":"network-levit-sonatas","name":"Igor Levit — Complete Beethoven Piano Sonatas","kind":"network",
        "coords":"16.3722,48.2006,0","status":"confirmed",
        "event_label":"Eight-recital cycle, October 2026 – June 2028, Vienna among the venues — exact Vienna dates not yet published",
@@ -315,3 +375,68 @@ SECTIONS = [
     ],
   },
 ]
+
+# ─────────────────────────────────────────────────────────────────────────
+# CONCERT MONITOR — index.html
+# Entries here have no coords/kind of their own; they're ticket-agency
+# services with no physical Beethoven site, so they never appear in
+# catalog.html or the KML, only in the monitor.
+# ─────────────────────────────────────────────────────────────────────────
+MONITOR_ONLY = [
+  {"id":"service-interlude-travel","name":"Interlude Travel — Classical Music Specialists",
+   "link":"https://www.interlude.travel",
+   "monitor":{
+     "desc":"A UK-based travel company specialising in classical music journeys. Can procure otherwise unavailable tickets — including the March 26 flagship — and arrange accommodation. <strong>Worth contacting now</strong>: they will already be planning 2027 anniversary tours and will have allocations set aside.",
+     "badge":{"text":"Contact now","class":"watch"}}},
+  {"id":"service-classic-journeys","name":"Classic Journeys",
+   "link":"https://www.classicjourneys.co.uk",
+   "monitor":{
+     "desc":"Another classical travel specialist building packages around major anniversary concerts. Particularly useful for Vienna March 26 if individual tickets prove impossible to secure.",
+     "badge":{"text":"Backup option","class":"watch"}}},
+]
+
+# Page order/grouping for the monitor — references entries by id, pulled from
+# either SECTIONS (via the catalog) or MONITOR_ONLY above.
+MONITOR_GROUPS = [
+  {"label":"Bonn","dot":"dot-bonn","dates":"March 10–12",
+   "entry_ids":["bonn-beethovenhaus","bonn-beethovenhalle"]},
+  {"label":"Cologne","dot":"dot-cologne","dates":"March 12 evening",
+   "entry_ids":["cologne-philharmonie"]},
+  {"label":"EU Anniversary Network","dot":"dot-general",
+   "entry_ids":["network-beethoven27"]},
+  {"label":"Linz","dot":"dot-linz","dates":"March 17–18","divider_before":True,
+   "entry_ids":["linz-brucknerhaus"]},
+  {"label":"Vienna","dot":"dot-vienna","dates":"March 19 – April 9","divider_before":True,
+   "entry_ids":["vienna-musikverein","vienna-philharmonic","vienna-theater-an-der-wien",
+                "vienna-konzerthaus","vienna-staatsoper-fidelio","vienna-wiener-symphoniker"]},
+  {"label":"Specialist ticket services","dot":"dot-general","divider_before":True,
+   "entry_ids":["service-interlude-travel","service-classic-journeys"]},
+]
+
+# Page-level copy (header, intro, update band, strategy band, timeline) —
+# hand-written prose, centralized here so it regenerates instead of being
+# hand-edited in index.html directly.
+MONITOR_META = {
+  "header_subtitle": "Bonn to Vienna · 200th Anniversary of his Death",
+  "header_meta": "Germany &amp; Austria · Venue Guide &amp; Booking Tracker",
+  "date_range": "March 10 – April 9, 2027",
+  "intro": "On <strong>March 26, 1827</strong>, Beethoven died in Vienna. This page tracks every venue and ensemble worth watching across your four-week journey — from Bonn, along the Rhine, through Linz, to the anniversary itself. Bookmark it and return as programmes are announced from autumn 2026.",
+  "updated": "14 July 2026",
+  "prepared": "June 2026",
+  "travelers": "Four travelers",
+  "updates": [
+    "<strong>Beethoven Orchester Bonn is bookable now.</strong> Their Missa Solemnis (Mar 25, Beethovenhalle) is confirmed with soprano Chen Reiss — general booking opened 26 June 2026.",
+    "<strong>Musikverein flagship confirmed as a three-concert run</strong>, not a single date: Fri Mar 20 (mat.), Sat Mar 21 (mat.), and Fri Mar 26 (evening) — Welser-Möst conducts the VPO and Singverein in the Missa Solemnis, with Golda Schultz, Deniz Uzun, Daniel Behle, and Martin Summer as soloists.",
+    "<strong>Bruckner Orchester Linz's Beethoven cycle</strong> is confirmed continuing through 2026/27, and — worth knowing — each Brucknerhaus programme is repeated the very next day at the Musikverein Golden Hall, so a Linz concert and a Vienna concert may end up being the same programme.",
+    "Exact general (non-subscriber) on-sale date for individual Musikverein tickets wasn't independently reconfirmed this pass — check musikverein.at directly closer to autumn 2026. The VPO's own standing-room subscription sale opens Mon 14 Sept 2026.",
+    "New for context, outside your route: the <strong>Gewandhaus Leipzig</strong> is running its own dedicated Beethoven festival May 11–23, 2027 (Gautier Capuçon, Lang Lang, Augustin Hadelich) — not on your itinerary but worth knowing the anniversary landscape extends there too.",
+  ],
+  "strategy": "Programmes for 2027 are announced from <strong>autumn 2026</strong>. Create accounts at each venue site now so you can purchase the moment tickets release. For <strong>March 26</strong> specifically — have Musikverein and Vienna Philharmonic open simultaneously. If the flagship concert sells out instantly, the specialist travel services below are your safety net.",
+  "timeline": [
+    {"date":"Now (done)","action":"<strong>Book the Beethoven Orchester Bonn Missa Solemnis (Mar 25)</strong> — this is live and bookable today. Also create accounts at Musikverein, Vienna Philharmonic, and Konzerthaus, and enable alerts. Contact Interlude Travel to flag your interest in the March 26 concert."},
+    {"date":"Sep 14, 2026","action":"Vienna Philharmonic standing-room subscription sale opens at 9:30am (in-person only, Kärntner Ring 12 box office). Not the seated single-ticket sale, but worth knowing if standing room suits the group."},
+    {"date":"Autumn 2026","action":"<strong>Act immediately</strong> when Musikverein and Vienna Philharmonic publish general single-ticket sale dates for the confirmed Mar 20/21/26 Missa Solemnis run. This is also when Brucknerhaus Linz is expected to publish exact 2027 cycle dates, and when Theater an der Wien's season should be announced."},
+    {"date":"Mar 26 on sale","action":"Have <strong>musikverein.at</strong> and <strong>wienerphilharmoniker.at</strong> open simultaneously. The flagship anniversary concert may sell out within hours. If it does, call Interlude Travel immediately."},
+    {"date":"Mar 26, 2027","action":"200 years to the day. Vienna. The <em>Ninth Symphony</em>. This is the reason for the journey."},
+  ],
+}

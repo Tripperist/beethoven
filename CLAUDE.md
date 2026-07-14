@@ -14,26 +14,35 @@ Beethoven-related worth knowing about, on-route or not.
 | `index.html` | Concert monitor — tracks ticket on-sale status, booking urgency, per-venue notes |
 | `catalog.html` | The full compendium — every sight, museum, tavern, and event, organized by place |
 | `beethoven_pilgrimage_2027_catalog.kml` | Visual/map representation of the catalog, for Google Earth / Maps |
-| `build/data.py` | **Single source of truth** for everything in `catalog.html` and the `.kml` |
+| `build/data.py` | **Single source of truth** for everything in all three generated files above |
 | `build/gen_catalog.py` | Reads `data.py` → writes `catalog.html` |
 | `build/gen_kml.py` | Reads `data.py` → writes the `.kml` |
+| `build/gen_index.py` | Reads `data.py` → writes `index.html` (the concert monitor) |
 | `LICENSE` | MIT |
 
 ## Critical rule: regenerate, don't hand-edit
 
-`catalog.html` and the `.kml` are both generated from `build/data.py`. Every entry in
-`data.py` has an `id` that is used as **both** the HTML anchor (`catalog.html#that-id`)
-**and** the link target inside the corresponding KML placemark's description. If you
-edit `catalog.html` or the `.kml` directly, the two will silently drift apart and the
-map's "Full entry in the Beethoven Catalog →" links will break.
+`index.html`, `catalog.html`, and the `.kml` are **all three** generated from
+`build/data.py` — none of them should be hand-edited directly, or they'll silently
+drift apart. Every entry in `data.py` has an `id` that's reused as the anchor in
+whichever of the three files it appears in, so the same `id` is what ties a catalog
+card, a KML placemark's "Full entry in the Beethoven Catalog →" link, and a Concert
+Monitor venue card together. Venues that are actively tracked for booking status also
+carry a `monitor` sub-dict (booking-focused prose/chips/badge, distinct in tone from
+the catalog's historical `body` text) — its presence is what makes `gen_catalog.py`
+and `gen_kml.py` emit a "Booking status in the Concert Monitor →" link back to
+`index.html#that-id`. Two ticket-agency entries (Interlude Travel, Classic Journeys)
+live in `MONITOR_ONLY` instead of `SECTIONS`, since they're not physical Beethoven
+sites and have no coords, catalog card, or KML placemark of their own.
 
-**Workflow for any content change:** edit `build/data.py` → run
-`python3 build/gen_catalog.py && python3 build/gen_kml.py` from the `build/` directory
-→ commit all three changed files together (`data.py`, `catalog.html`, the `.kml`).
-
-`index.html` (the concert monitor) is currently hand-maintained separately and is
-*not* generated from `data.py`. That's a known inconsistency — worth deciding at some
-point whether it should be folded into the same data model, but no rush.
+**Workflow for any content change:** edit `build/data.py` → run, **from the repo
+root** (the scripts write relative output paths, so running them from inside `build/`
+writes stray copies there instead of updating the real files):
+```
+python build/gen_catalog.py && python build/gen_kml.py && python build/gen_index.py
+```
+→ commit all four changed files together (`data.py`, `catalog.html`, the `.kml`,
+`index.html`).
 
 ## Dates: two different philosophies, on purpose
 
@@ -55,6 +64,10 @@ Vienna route or not — it belongs in `data.py`, tagged appropriately (`kind: "n
 for off-route/context entries, using the existing `network` section as the place for
 those). Err toward including things rather than filtering for relevance.
 
+Every entry's `coords` (stored KML-style as `lon,lat,alt`) automatically produces a
+"View on Google Maps" link via the `maps_url()` helper in `data.py` — don't hand-write
+Maps URLs, and don't forget the lon/lat swap if you ever touch that function.
+
 ## Known open items
 
 - The original day-by-day itinerary docx and the earlier (pre-catalog) merged KML
@@ -64,5 +77,3 @@ those). Err toward including things rather than filtering for relevance.
 - Several event dates are still genuinely unconfirmed (Konzerthaus Vienna, Cologne,
   Munich, Salzburg concerts) — these are correctly marked tentative in `data.py`;
   don't "fill them in" without a real source.
-- `index.html` and `catalog.html`/`data.py` are not yet cross-linked with nav — no
-  way to get from one to the other on the page itself yet.
